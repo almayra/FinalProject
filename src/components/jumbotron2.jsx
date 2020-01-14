@@ -16,7 +16,7 @@ class Jumbotron2 extends Component {
                 </div>
                 <div></div>
                 <div data-aos="fade-up" data-aos-duration="1000">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-35cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-35.5cm'}}/>
                     <img src={ICON} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'

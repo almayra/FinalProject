@@ -1,5 +1,6 @@
 export const APIURL='http://localhost:2000/'
 export const LOGO = 'https://cdn1.imggmi.com/uploads/2019/12/22/956d6488f3788695f7e4c6e55399ce26-full.png'
+export const RANDOM = 'https://cdn1.imggmi.com/uploads/2020/1/12/94d711e57b333ea67144205c719306c9-full.png'
 export const IMG1 = 'https://cdn1.imggmi.com/uploads/2019/12/31/ea3df47aef8367b5920ebfe119a70a8e-full.png'
 export const IMG2 = 'https://cdn1.imggmi.com/uploads/2019/12/31/8ee9c818eece696b630d92aa21586e25-full.png'
 export const LINE = 'https://cdn1.imggmi.com/uploads/2020/1/9/ea7162c07ff87cd8c90134889330a081-full.png'
@@ -17,3 +18,4 @@ export const ICON9 = 'https://cdn1.imggmi.com/uploads/2020/1/9/6988d78def3df28ca
 export const ICON10 = 'https://cdn1.imggmi.com/uploads/2020/1/10/acc59efc97a5617afcbc5429ba4be13d-full.png'
 export const ICON11 = 'https://cdn1.imggmi.com/uploads/2020/1/10/f1aacf23c687cfa0671bd5ec2125f525-full.png'
 export const FOTO='https://cdn1.imggmi.com/uploads/2020/1/12/8b77f7eb33f831134481d5132a5c8d87-full.jpg'
+export const USER='https://cdn1.imggmi.com/uploads/2020/1/13/0ecf41b592520154545c0d4fc4d126bb-full.png'

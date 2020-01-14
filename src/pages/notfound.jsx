@@ -6,7 +6,7 @@ export class Notfound extends Component {
         return (
             <div className='notfound'>
                 <div>
-                    <h2 style={{color:'white',fontSize:'45px'}}>PAGE NOT FOUND</h2>
+                    <h2 style={{color:'white',fontSize:'45px',paddingTop:'2cm',fontWeight:'bold'}}>PAGE NOT FOUND</h2>
                 </div>
                 <div className='mx-auto'>
                     <img
@@ -15,7 +15,7 @@ export class Notfound extends Component {
                     />
                 </div>
                 <div className='mt-5 mr-5'>
-                    <Link to='/' className='btn btn-info'>Come Home, Sis</Link>
+                    <Link to='/' className='btn btn-primary'>Come Home, Sis</Link>
                 </div>
             </div>
         )

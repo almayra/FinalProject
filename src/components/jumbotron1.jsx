@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { IMG1,IMG2, LINE } from '../support/url'
-
+import { Link } from 'react-router-dom';
 
 export class Jumbotron1 extends Component {
     render() {
@@ -11,8 +11,8 @@ export class Jumbotron1 extends Component {
                     Akses Tanpa Batas.<br/>
                     Join Komunitas.
                 </div>
-                <div className='daftar' style={{cursor:'pointer'}}>
-                    Daftar
+                <div className='daftar' style={{cursor:'pointer',}}>
+                    <Link to='/register' style={{cursor:'pointer',color:'white',textDecoration:'none',fontWeight:'bold'}}>Daftar</Link>
                 </div>
                 <div style={{marginLeft:'9cm',marginTop:'1cm'}}>
                     <div class="card" style={{width: '20rem', borderRadius:'2rem'}}>

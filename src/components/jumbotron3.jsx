@@ -20,7 +20,7 @@ export class Jumbotron3 extends Component {
                     style={{width:'130px',height:'120px'}} 
                     className='icon2'
                     />
-                    <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='g'>g. Content Provider</h2>
+                    <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='g1'>g. Content Provider</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="2000">
                     <span className='dot' style={{marginTop:'2cm',marginLeft:'1cm'}}/>
@@ -28,7 +28,7 @@ export class Jumbotron3 extends Component {
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
                     />
-                    <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='h'>h. Creative Group Head</h2>
+                    <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='h1'>i. Creative Group Head</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="2500">
                     <span className='dot' style={{marginTop:'2cm',marginLeft:'1.7cm'}}/>
@@ -36,7 +36,7 @@ export class Jumbotron3 extends Component {
                     style={{width:'120px',height:'135px'}} 
                     className='icon3'
                     />
-                    <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='h'>i. Perorangan</h2>
+                    <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='h1'>i. Perorangan</h2>
                 </div>
                 <div style={{marginTop:'8cm',marginLeft:'-26cm'}}>
                     <img 

@@ -29,7 +29,7 @@ class Login extends Component {
                         <MDBContainer>
                             <MDBRow>
                                 <MDBCol md='9'>
-                                <form>
+                                <div>
                                     <div className="grey-text">
                                     <MDBInput
                                         label="Email kamu"
@@ -48,10 +48,11 @@ class Login extends Component {
                                         validate
                                     />
                                     </div>
+                                    <Link to='/changepass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'4.5cm',fontWeight:'lighter',textDecoration:'none',color:'#4b4b4b'}}>Lupa Password?</Link>
                                     <div className="text-center mt-5">
                                     <MDBBtn>Masuk</MDBBtn>
                                     </div>
-                                </form>
+                                </div>
                                 </MDBCol>
                             </MDBRow>
                         </MDBContainer>
