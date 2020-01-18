@@ -17,7 +17,7 @@ class Login extends Component {
                     </Link>
                     <div className='login1-halfbox'>
                         <img
-                        style={{width:'18cm',height:'14cm',marginTop:'2cm',marginLeft:'1cm'}}
+                        style={{width:'18cm',height:'14cm',marginTop:'2cm',marginLeft:'-0.6cm'}}
                         src='https://cdn1.imggmi.com/uploads/2020/1/11/30a75e0b5d6aee649f28d426f2ebdb3e-full.png'
                         />
                     </div>
@@ -25,7 +25,7 @@ class Login extends Component {
                         <div className='tulismasuk'>
                             Masuk Akun
                         </div>
-                        <div style={{marginLeft:'3cm',marginTop:'1cm'}}>
+                        <div style={{marginLeft:'3cm',marginTop:'-3cm'}}>
                         <MDBContainer>
                             <MDBRow>
                                 <MDBCol md='9'>
@@ -48,7 +48,7 @@ class Login extends Component {
                                         validate
                                     />
                                     </div>
-                                    <Link to='/changepass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'4.5cm',fontWeight:'lighter',textDecoration:'none',color:'#4b4b4b'}}>Lupa Password?</Link>
+                                    <Link to='/changepass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'3.5cm',fontWeight:'lighter',textDecoration:'none',color:'black'}}>Lupa Password?</Link>
                                     <div className="text-center mt-5">
                                     <MDBBtn>Masuk</MDBBtn>
                                     </div>
@@ -57,7 +57,7 @@ class Login extends Component {
                             </MDBRow>
                         </MDBContainer>
                         </div>
-                        <div style={{marginTop:'2.5cm',fontWeight:'initial'}}>
+                        <div style={{marginTop:'-1cm',fontWeight:'initial'}}>
                             <Link to='/register' className='buat' style={{cursor:'pointer',color:'#4e4e4e',textDecoration:'none'}}>Buat Akun Kamu <FaLongArrowAltRight/></Link>
                         </div>
                     </div>

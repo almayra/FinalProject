@@ -23,7 +23,7 @@ export class Jumbotron3 extends Component {
                     <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='g1'>g. Content Provider</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="2000">
-                    <span className='dot' style={{marginTop:'2cm',marginLeft:'1cm'}}/>
+                    <span className='dot' style={{marginTop:'2cm',marginLeft:'0.5cm'}}/>
                     <img src={ICON7} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
@@ -31,7 +31,7 @@ export class Jumbotron3 extends Component {
                     <h2 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='h1'>i. Creative Group Head</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="2500">
-                    <span className='dot' style={{marginTop:'2cm',marginLeft:'1.7cm'}}/>
+                    <span className='dot' style={{marginTop:'2cm',marginLeft:'1cm'}}/>
                     <img src={ICON8} 
                     style={{width:'120px',height:'135px'}} 
                     className='icon3'

@@ -11,9 +11,11 @@ import Jumbotron6 from './components/jumbotron6'
 import Notfound from './pages/notfound'
 import Login from './pages/login'
 import Register from './pages/register'
-import Kelas, { Home } from './pages/home'
+import Home from './pages/home'
+import Kelas from './pages/kelas'
 import Footer from './components/footer'
 import Changepass from './pages/changepass';
+import Subscribe from './pages/subscribe';
 
 
 function App() {
@@ -28,16 +30,18 @@ function App() {
           <Jumbotron4/>
           <Jumbotron5/>
           <Jumbotron6/>
+          <Footer/>
         </Route>
         <Route path={'/kelas'} exact component={Kelas} />
         <Route path={'/login'} exact component={Login} />
         <Route path={'/register'} exact component={Register} />
         <Route path={'/home'} exact component={Home} />
+        <Route path={'/kelas'} exact component={Kelas} />
         <Route path={'/changepass'} exact component={Changepass} />
+        <Route path={'/paketbelajar'} exact component={Subscribe} />
         <Route path={'/*'} exact component={Notfound} />
         <Route path='/404' component={Notfound} exact/>
       </Switch>
-      <Footer/>
     </div>
   );
 }

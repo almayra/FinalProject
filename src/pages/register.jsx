@@ -24,7 +24,7 @@ export class Register extends Component {
                     <div className='tuliss'>
                         Daftar Akun
                     </div>
-                    <div style={{marginLeft:'3cm',marginTop:'1cm'}}>
+                    <div style={{marginLeft:'3cm',marginTop:'-3cm'}}>
                         <MDBContainer>
                             <MDBRow>
                                 <MDBCol md="9">
@@ -73,7 +73,7 @@ export class Register extends Component {
                             </MDBRow>
                         </MDBContainer>
                     </div>
-                    <div style={{marginTop:'2.5cm',fontWeight:'initial'}}>
+                    <div style={{marginTop:'-1cm',fontWeight:'initial'}}>
                         <Link to='/login' className='buat' style={{cursor:'pointer',color:'#4e4e4e',textDecoration:'none'}}>Punya Akun? <FaLongArrowAltRight/></Link>
                     </div>
                 </div>

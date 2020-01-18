@@ -12,7 +12,7 @@ export class Jumbotron6 extends Component {
                         700+ orang telah melakukannya. Kamu?
                         </div>
                         <div className='daftar1' data-aos="zoom-in" data-aos-duration="1000">
-                            <Link to='/register' style={{cursor:'pointer',color:'white',textDecoration:'none'}}>Daftar Sekarang</Link>
+                            <Link to='/register' style={{cursor:'pointer',color:'white',textDecoration:'none',fontWeight:'bold'}}>Daftar Sekarang</Link>
                         </div>
                 </div>
 
