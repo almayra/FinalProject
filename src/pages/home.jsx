@@ -7,18 +7,16 @@ export class Home extends Component {
         return (
             <div className='App-kelas'>
                 <div className='sidebar'>
-                    <div class="container white topBotomBordersOut" style={{marginLeft:'-9cm',marginTop:'-3cm'}}>
-                        <a>HOME</a>
+                <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
+                        <a>BERANDA</a>
                         <Link a to='kelas' style={{color:'black'}}>
                             KELAS
                         </Link>
-                        <a>TENTANG PKC</a>
-                        <div>
+                        <a>GALERI PKC</a>
                             <FaUserAlt
                             size={30}
                             style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
                             />
-                        </div>
                     </div>        
                 </div>
                 <div className='kecuali'>

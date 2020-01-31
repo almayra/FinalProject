@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 export class Notfound extends Component {
     render() {
         return (
-            <div className='notfound'>
+            <div className='notfound1'>
                 <div>
-                    <h2 style={{color:'white',fontSize:'45px',paddingTop:'2cm',fontWeight:'bold'}}>PAGE NOT FOUND</h2>
+                    <h2 style={{color:'white',fontSize:'45px',paddingTop:'2cm',fontWeight:'bold'}}
+                    className='mx-auto'
+                    >PAGE NOT FOUND</h2>
                 </div>
                 <div className='mx-auto'>
                     <img

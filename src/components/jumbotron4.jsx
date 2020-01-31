@@ -8,7 +8,7 @@ export class Jumbotron4 extends Component {
                 <div data-aos="fade-up" data-aos-duration="1000" style={{fontWeight:'bold',fontSize:'50px',color:'white',marginTop:'-0.5cm',marginLeft:'2cm'}}>
                     Mengapa Pesantren Kilat Copywriting?
                 </div>
-                <div data-aos="fade-up" data-aos-duration="1500">
+                <div data-aos="fade-up" data-aos-duration="1000">
                     <img
                     src={ICON9}
                     style={{width:'100px',height:'100px',marginLeft:'-45cm',marginTop:'3cm'}}
@@ -34,12 +34,12 @@ export class Jumbotron4 extends Component {
                     praktek dan video
                     </div>
                     <img
-                    data-aos="fade-up" data-aos-duration="2100"
+                    data-aos="fade-up" data-aos-duration="2300"
                     src={LINE1}
                     style={{width:'8px',height:'6cm', marginLeft:'-10.5cm',marginTop:'-5.5cm'}}
                     />
                 </div>
-                <div data-aos="fade-up" data-aos-duration="2500">
+                <div data-aos="fade-up" data-aos-duration="3000">
                     <img
                     src={ICON11}
                     style={{width:'100px',height:'100px',marginLeft:'-4cm',marginTop:'3cm'}}

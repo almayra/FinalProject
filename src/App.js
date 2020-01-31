@@ -16,7 +16,8 @@ import Kelas from './pages/kelas'
 import Footer from './components/footer'
 import Changepass from './pages/changepass';
 import Subscribe from './pages/subscribe';
-
+import Profil from './pages/profil';
+import Admin from './pages/admin';
 
 function App() {
   return (
@@ -38,7 +39,9 @@ function App() {
         <Route path={'/home'} exact component={Home} />
         <Route path={'/kelas'} exact component={Kelas} />
         <Route path={'/changepass'} exact component={Changepass} />
+        <Route path={'/profil'} exact component={Profil} />
         <Route path={'/paketbelajar'} exact component={Subscribe} />
+        <Route path={'/admin'} component={Admin} exact/>
         <Route path={'/*'} exact component={Notfound} />
         <Route path='/404' component={Notfound} exact/>
       </Switch>

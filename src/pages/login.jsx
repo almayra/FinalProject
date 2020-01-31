@@ -48,7 +48,7 @@ class Login extends Component {
                                         validate
                                     />
                                     </div>
-                                    <Link to='/changepass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'3.5cm',fontWeight:'lighter',textDecoration:'none',color:'black'}}>Lupa Password?</Link>
+                                    <Link to='/changepass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'3.5cm',fontWeight:'200px',textDecoration:'none',color:'black'}}>Lupa Password?</Link>
                                     <div className="text-center mt-5">
                                     <MDBBtn>Masuk</MDBBtn>
                                     </div>

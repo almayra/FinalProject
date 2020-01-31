@@ -68,6 +68,7 @@
   width: 100vh;
   background-color: var(--text-color);
 }
+
 .login1-halfblock{
   height: 80vh;
   width: 90vh;
@@ -83,6 +84,10 @@
   background-image: linear-gradient(#9ADBC5,#6EC6CA);
   height: 100vh;
   display: flex;
+}
+.notfound1{
+  background-image: linear-gradient(#9ADBC5,#6EC6CA);
+  height: 100vh;
 }
 .logo{
   justify-content: left;
@@ -109,6 +114,25 @@
   padding-top: 10px;
   margin-top: 1.2cm;
 }
+.tambahkelas{
+  background-color: #2bbbad;
+  width: 180px;
+  height: 60px;
+  color: var(--text-color);
+  padding-top: 20px;
+  margin-top: 1.2cm;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: -1cm;
+  margin-left: 22cm;
+  cursor: pointer;
+}
+
+.tambahkelas:hover{
+  box-shadow: 0 1px 15px #7272724d;
+  transition: 0.2s ease-out;
+}
+
 .text1{
   color: var(--text-color);
   font-size: 30px;
@@ -118,6 +142,139 @@
   margin-top: 2.5cm;
   line-height: 45px;
 }
+
+.css-typing p {
+  color: var(--text-color);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 1cm;
+  margin-top: -1cm;
+  line-height: 45px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.css-typing p:nth-child(1) {
+  width: 310px;
+  -webkit-animation: type 2s steps(40, end);
+  animation: type 2s steps(40, end);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(2) {
+  width: 310px;
+  opacity: 0;
+  -webkit-animation: type2 2s steps(40, end);
+  animation: type2 2s steps(40, end);
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(3) {
+  width: 270px;
+  opacity: 0;
+  -webkit-animation: type2 5s steps(40, end);
+  animation: type2 2s steps(40, end);
+  -webkit-animation-delay: 2s;
+  animation-delay: 4s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid white;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid white;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid white;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid white;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
+
 .daftar{
   border: 3px solid var(--text-color);
   color: var(--text-color);
@@ -151,6 +308,7 @@
   margin-top: 1cm;
   margin-left: 5.2cm;
 }
+
 .telusuri{
   border: 4px solid var(--color-back1);
   color: var(--text-color);
@@ -217,10 +375,10 @@
 .g1{
   text-transform: initial;
   margin-top: 15px;
-  margin-left: 2.5cm;
+  margin-left: 2cm;
 }
 .h1{
-  text-transform: initial;
+  text-transform: none;
   margin-top: 15px;
   margin-left: 1cm;
 }
@@ -673,7 +831,7 @@ div.container a
     background: #ffc107;
 }
 
-.orange
+.white
 {
     background: #ff9800
 }
@@ -763,9 +921,24 @@ div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
   margin-top: 3.5cm;
   margin-left: -18cm;
 }
+
+.box1{
+  width: 1100px;
+  height: 170px;
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  margin-top: 3.5cm;
+  margin-left: -19cm;
+  border: 2px solid #adadad;
+}
+
 .bebas{
   padding-top: 1.5cm;
   padding-left: 3cm;
+}
+.bebas1{
+  padding-top: 2cm;
+  padding-left: -5cm;
 }
 .block{
   width: 1100px;
@@ -774,10 +947,17 @@ div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
   margin-top: -1.5cm;
   margin-left: 0cm;
 }
+.materi{
+  color: #363636;
+  font-size: 25px;
+  font-weight: bolder;
+  margin-top: 5px;
+  margin-left: 1cm;
+}
 .kategori{
-  width: 350px;
+  width: 250px;
   height: 50px;
-  border-radius: 20px;
+  border-radius: 15px;
   background-color: #ececec;
   color: #4e4e4e;
   font-size: 20px;
@@ -787,4 +967,7 @@ div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
 .kategori:hover{
   color: var(--color-back1);
   cursor: pointer;
+}
+.list-group-item{
+  text-align: left;
 }

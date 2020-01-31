@@ -6,10 +6,16 @@ export class Jumbotron1 extends Component {
     render() {
         return (
             <div className='App-jumbotron'>
-                <div className='text1'>
-                    Materi Berkualitas.<br/>
-                    Akses Tanpa Batas.<br/>
-                    Join Komunitas.
+                <div className='text1 css-typing'>
+                    <p>
+                        Materi Berkualitas.
+                    </p>
+                    <p>
+                        Akses Tanpa Batas.
+                    </p>
+                    <p>
+                        Join Komunitas.
+                    </p>
                 </div>
                 <div className='daftar' style={{cursor:'pointer',}}>
                     <Link to='/register' style={{cursor:'pointer',color:'white',textDecoration:'none',fontWeight:'bold'}}>Daftar</Link>

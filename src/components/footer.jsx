@@ -29,13 +29,13 @@ export class Footer extends Component {
                         <a href='https://www.instagram.com/almayra19/' className='instagram'>
                             <FaInstagram />
                         </a>
-                        <a href='/' className='twitter'>
+                        <a href='https://twitter.com/lovumou_' className='twitter'>
                             <FaTwitter />
                         </a>
                         <a href='/' className='email'>
                             <FaEnvelope />
                         </a>
-                        <a href='/' className='linked'>
+                        <a href='https://www.linkedin.com/in/almayra-zamzamy-461350188/' className='linked'>
                             <FaLinkedin />
                         </a>
                     </div>
