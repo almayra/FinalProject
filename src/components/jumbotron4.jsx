@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
-import {ICON9, ICON10, ICON11, LINE1, LINE} from './../support/url'
+import ICON9 from '../support/img/quality.png'
+import ICON10 from '../support/img/video-camera.png'
+import ICON11 from '../support/img/donasi.png'
+import LINE1 from '../support/img/vertical-line.png'
+import LINE from '../support/img/garis.png'
+
+
 
 export class Jumbotron4 extends Component {
     render() {
         return (
             <div className='App-jumbotron3'>
-                <div data-aos="fade-up" data-aos-duration="1000" style={{fontWeight:'bold',fontSize:'50px',color:'white',marginTop:'-0.5cm',marginLeft:'2cm'}}>
+                <div data-aos="fade-up" data-aos-duration="1000" style={{fontWeight:'bold',fontSize:'50px',color:'white',marginTop:'-0.5cm',marginLeft:'5cm'}}>
                     Mengapa Pesantren Kilat Copywriting?
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1000">
@@ -48,7 +54,7 @@ export class Jumbotron4 extends Component {
                     50% pemasukan PKC didonasikan
                     </div>
                 </div>
-                <div style={{marginTop:'11.5cm',marginLeft:'-30.7cm'}}>
+                <div style={{marginTop:'11.5cm',marginLeft:'-30cm'}}>
                     <img 
                     src={LINE}
                     style={{width:'1200px',height:'50px'}}

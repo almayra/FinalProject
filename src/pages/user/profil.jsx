@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { IMG1,IMG2, LINE } from '../support/url'
 import {FaUserAlt} from 'react-icons/fa'
 
 export class Profil extends Component {

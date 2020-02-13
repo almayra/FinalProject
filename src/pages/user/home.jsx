@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import {FaUserAlt} from 'react-icons/fa'
+import KELAS from '../../support/img/kosong.png'
 
 export class Home extends Component {
     render() {
@@ -12,11 +13,13 @@ export class Home extends Component {
                         <Link a to='kelas' style={{color:'black'}}>
                             KELAS
                         </Link>
-                        <a>GALERI PKC</a>
+                        <Link a to='galeri' style={{color:'black'}}>
+                            GALERI PKC
+                        </Link>
                             <FaUserAlt
                             size={30}
                             style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
-                            />
+                        />
                     </div>        
                 </div>
                 <div className='kecuali'>
@@ -28,7 +31,7 @@ export class Home extends Component {
                 <div>
                     <img
                     style={{marginTop:'-12cm',marginLeft:'-8cm',width:'22cm',  position: 'relative'}}
-                    src='https://cdn1.imggmi.com/uploads/2020/1/14/c82e38e5df362d44d5a9f7651a0f773a-full.png'
+                    src={KELAS}
                     />
                 </div>
                 <div className='kosong'>

@@ -2,15 +2,35 @@ import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import {FaLongArrowAltRight} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
-
+import LOGO from '../support/img/logoitem.png'
+import GAMBAR from '../support/img/login.png'
+import {AiOutlineExclamationCircle} from 'react-icons/ai'
 
 class Login extends Component {
+    btnLogin=()=>{
+        var username=this.username.value
+        var password=this.password.value
+
+        this.props.UserLogin({
+            username,
+            password
+        })
+    }
+
+    renderError=()=>{
+        if(this.props.error===''){
+            return null
+        }else{
+            return <p className='block-example border border-danger' style={{width:'90%', marginLeft:'1cm',color:'#dd3c3c', fontSize:'12px',paddingTop:'11px'}}> <AiOutlineExclamationCircle size={20} className='mr-2' style={{marginTop:'-5px'}} /> {this.props.error} </p>
+        }
+    }
+
     render() {
         return (
             <div>
                 <div className='login1'>
                     <Link to='/' style={{cursor:'pointer'}}>
-                        <img src='https://cdn1.imggmi.com/uploads/2020/1/12/de670de25a87d95c9626aead0c996790-full.png'
+                        <img src={LOGO}
                         className='d-flex logo'
                         style={{height:'150px',width:'150px'}}
                         />
@@ -18,7 +38,7 @@ class Login extends Component {
                     <div className='login1-halfbox'>
                         <img
                         style={{width:'18cm',height:'14cm',marginTop:'2cm',marginLeft:'-0.6cm'}}
-                        src='https://cdn1.imggmi.com/uploads/2020/1/11/30a75e0b5d6aee649f28d426f2ebdb3e-full.png'
+                        src={GAMBAR}
                         />
                     </div>
                     <div className='login1-halfblock'>
@@ -33,22 +53,22 @@ class Login extends Component {
                                     <div className="grey-text">
                                     <MDBInput
                                         label="Email kamu"
-                                        icon="envelope"
                                         group
-                                        type="email"
+                                        type="text"
                                         validate
                                         error="wrong"
                                         success="right"
+                                        inputRef={ref => this.username = ref}
                                     />
                                     <MDBInput
                                         label="Password kamu"
-                                        icon="lock"
                                         group
                                         type="password"
                                         validate
+                                        inputRef={ref => this.password = ref}
                                     />
                                     </div>
-                                    <Link to='/changepass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'3.5cm',fontWeight:'200px',textDecoration:'none',color:'black'}}>Lupa Password?</Link>
+                                    <Link to='/gantipass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'3.5cm',fontWeight:'200px',textDecoration:'none',color:'black'}}>Lupa Password?</Link>
                                     <div className="text-center mt-5">
                                     <MDBBtn>Masuk</MDBBtn>
                                     </div>

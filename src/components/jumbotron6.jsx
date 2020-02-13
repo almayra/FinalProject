@@ -7,7 +7,7 @@ export class Jumbotron6 extends Component {
             <div className='App-jumbotron5 d-flex'>
                 <div style={{fontWeight:'bold',fontSize:'45px',color:'white',marginTop:'1cm'}} className='mx-auto'>
                 ❝ Speak what you feel and<br/><br/><br/><br/>
-                    write what you speak. ❞
+                    write how you speak. ❞
                         <div style={{fontWeight:'bold',fontSize:'20px',color:'#B8B8B8',marginTop:'5cm'}}>
                         700+ orang telah melakukannya. Kamu?
                         </div>

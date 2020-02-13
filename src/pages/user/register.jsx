@@ -1,23 +1,58 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import LOGO from '../../support/img/logoitem.png'
+import GAMBAR from '../../support/img/regis.png'
 import {FaLongArrowAltRight} from 'react-icons/fa'
-import { Link } from 'react-router-dom';
-
+import { Link, Redirect } from 'react-router-dom';
+import {UserRegister} from '../../redux/action'
+import {connect} from 'react-redux'
+import {AiOutlineExclamationCircle} from 'react-icons/ai'
+import Loader from 'react-loader-spinner'
 
 export class Register extends Component {
+    state={
+        error:'',
+        loading:false
+    }
+
+    btnRegister=()=>{
+        var username = this.username.value
+        var email = this.email.value
+        var password = this.password.value
+        
+        this.props.UserRegister({
+            username,
+            email,
+            password
+        })
+        
+    }
+
+    renderError=()=>{
+        if (this.props.error==='') {
+            return null
+        }else{
+            return <p className='block-example border border-danger' style={{width:'90%', marginLeft:'1cm',color:'#dd3c3c', fontSize:'12px',paddingTop:'11px'}}> <AiOutlineExclamationCircle size={20} className='mr-2' style={{marginTop:'-5px'}} /> {this.props.error} </p>
+        }
+    }
+
+
     render() {
+        if (this.props.register) {
+            return <Redirect to='/beranda' />
+        }
         return (
             <div className='login1'>
                 <Link to='/' style={{cursor:'pointer'}}>
-                    <img src='https://cdn1.imggmi.com/uploads/2020/1/12/de670de25a87d95c9626aead0c996790-full.png'
+                    <img src={LOGO}
                     className='d-flex logo'
                     style={{height:'150px',width:'150px'}}
                     />
                 </Link>
                 <div className='login1-halfbox'>
                     <img
-                    style={{width:'18cm',height:'14cm',marginTop:'2cm',marginLeft:'1cm'}}
-                    src='https://cdn1.imggmi.com/uploads/2020/1/12/159e5c93b34d039a2746e14414290916-full.png'
+                    style={{width:'18cm',height:'14cm',marginTop:'2cm',marginLeft:'-0.6cm'}}
+                    src={GAMBAR}
                     />
                 </div>
                 <div className='login1-halfblock'>
@@ -35,38 +70,32 @@ export class Register extends Component {
                                         icon="user"
                                         group
                                         type="text"
-                                        validate
-                                        error="wrong"
-                                        success="right"
+                                        inputRef={ref => this.username = ref}
                                         />
                                     <MDBInput
                                         label="Email kamu"
                                         icon="envelope"
                                         group
                                         type="email"
-                                        validate
-                                        error="wrong"
-                                        success="right"
-                                        />
-                                    <MDBInput
-                                        label="Konfirmasi email"
-                                        icon="exclamation-triangle"
-                                        group
-                                        type="text"
-                                        validate
-                                        error="wrong"
-                                        success="right"
+                                        inputRef={ref => this.email = ref}
                                         />
                                     <MDBInput
                                         label="Password kamu"
                                         icon="lock"
                                         group
                                         type="password"
-                                        validate
+                                        inputRef={ref => this.password = ref}
                                         />
                                     </div>
+                                    <div>
+                                        {this.renderError()}
+                                    </div>
                                     <div className="text-center">
-                                    <MDBBtn>Daftar</MDBBtn>
+                                        {this.props.auth.loading?
+                                            <Loader type="Hearts" color="pink" height={100} width={100} />
+                                        :
+                                            <MDBBtn onClick={this.btnRegister} style={{marginTop:'2cm'}} >Daftar</MDBBtn>
+                                    }
                                     </div>
                                 </form>
                                 </MDBCol>
@@ -82,4 +111,12 @@ export class Register extends Component {
     }
 }
 
-export default Register
+const MapStateToProps=(state)=>{
+    return{
+        error:state.Auth.error,
+        register:state.Auth.register,
+        auth:state.Auth
+    }
+}
+
+export default connect(MapStateToProps, {UserRegister}) (Register)

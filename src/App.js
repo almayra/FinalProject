@@ -10,14 +10,21 @@ import Jumbotron5 from './components/jumbotron5';
 import Jumbotron6 from './components/jumbotron6'
 import Notfound from './pages/notfound'
 import Login from './pages/login'
-import Register from './pages/register'
-import Home from './pages/home'
-import Kelas from './pages/kelas'
+import Register from './pages/user/register'
+import Home from './pages/user/home'
+import Kelas from './pages/user/kelas'
 import Footer from './components/footer'
 import Changepass from './pages/changepass';
-import Subscribe from './pages/subscribe';
-import Profil from './pages/profil';
-import Admin from './pages/admin';
+import Subscribe from './pages/user/subscribe';
+import Profil from './pages/user/profil';
+import Admin from './pages/admin/admin';
+import Verified from './pages/user/verified';
+import Mainadd from './pages/admin/mainadd'
+import Galeri from './pages/user/galeri'
+import Transaksi from './pages/admin/transaksi';
+import Performa from './pages/admin/performa';
+
+
 
 function App() {
   return (
@@ -36,12 +43,17 @@ function App() {
         <Route path={'/kelas'} exact component={Kelas} />
         <Route path={'/login'} exact component={Login} />
         <Route path={'/register'} exact component={Register} />
-        <Route path={'/home'} exact component={Home} />
+        <Route path={'/beranda'} exact component={Home} />
         <Route path={'/kelas'} exact component={Kelas} />
-        <Route path={'/changepass'} exact component={Changepass} />
+        <Route path={'/gantipass'} exact component={Changepass} />
         <Route path={'/profil'} exact component={Profil} />
         <Route path={'/paketbelajar'} exact component={Subscribe} />
-        <Route path={'/admin'} component={Admin} exact/>
+        <Route path={'/kursus'} component={Admin} exact/>
+        <Route path={'/verified'} component={Verified} exact/>
+        <Route path={'/tambahkelas'} component={Mainadd} exact/>
+        <Route path={'/galeri'} component={Galeri} exact/>
+        <Route path={'/transaksi'} component={Transaksi} exact/>
+        <Route path={'/performa'} component={Performa} exact/>
         <Route path={'/*'} exact component={Notfound} />
         <Route path='/404' component={Notfound} exact/>
       </Switch>

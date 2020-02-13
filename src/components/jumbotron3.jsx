@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
-import { ICON5, ICON6, ICON7, ICON8, LINE } from '../support/url'
+import LINE from '../support/img/garis.png'
+import ICON5 from '../support/img/theatre-masks.png'
+import ICON6 from '../support/img/youtube.png'
+import ICON7 from '../support/img/ide.png'
+import ICON8 from '../support/img/org.png'
+
 
 
 export class Jumbotron3 extends Component {
     render() {
         return (
             <div className='App-jumbotron2'>
+               <div className='App-jumbotron2'>
                 <div data-aos="fade-up" data-aos-duration="1000">
                     <span className='dot' style={{marginTop:'2cm',marginLeft:'6cm'}}/>
                     <img src={ICON5} 
@@ -44,6 +50,7 @@ export class Jumbotron3 extends Component {
                     style={{width:'1200px',height:'50px'}}
                     />
                 </div>
+            </div>
             </div>
         )
     }

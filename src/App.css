@@ -1,3 +1,4 @@
+
 *{
   font-family: 'Montserrat', sans-serif;
   padding: 0%;
@@ -16,6 +17,7 @@
 }
 .App {
   text-align: center;
+  scroll-behavior: smooth;
 }
 .App-jumbotron{
   height: 70vh;
@@ -59,6 +61,26 @@
   height: 100vh;
   display: flex;
 }
+.login1-admin{
+  height: 150vh;
+  display: flex;
+}
+.login3{
+  height: 200vh;
+  width: 100%;
+  display: flex;
+  background-color: #f8f9fb;
+}
+.verifikasi1{
+  height: 70vh;
+  display: flex;
+  color: bisque;
+}
+.ver2{
+  height: 70vh;
+  display: flex;
+  color: #c4d7ff;
+}
 .header{
   font-size: 15px;
   font-weight: bold;
@@ -89,6 +111,11 @@
   background-image: linear-gradient(#9ADBC5,#6EC6CA);
   height: 100vh;
 }
+.subscribe{
+  background-image: linear-gradient(#9ADBC5,#6EC6CA);
+  height: 100vh;
+  display: flex;
+}
 .logo{
   justify-content: left;
   margin-top: -20px;
@@ -118,12 +145,12 @@
   background-color: #2bbbad;
   width: 180px;
   height: 60px;
+  border-radius: 25px;
   color: var(--text-color);
   padding-top: 20px;
   margin-top: 1.2cm;
   font-size: 16px;
-  font-weight: bolder;
-  margin-top: -1cm;
+  font-weight: normal;
   margin-left: 22cm;
   cursor: pointer;
 }
@@ -308,6 +335,21 @@
   margin-top: 1cm;
   margin-left: 5.2cm;
 }
+.next{
+  border: 3px solid #2bbbad;
+  color: #2bbbad;
+  background-color: #f8f8f8;
+  text-decoration: none;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 7px;
+  padding-bottom: 4px;
+  width: 70px;
+  height: 45px;
+  font-size: 16px;
+  border-radius: 25px;
+}
 
 .telusuri{
   border: 4px solid var(--color-back1);
@@ -373,12 +415,12 @@
   margin-left: 6cm;
 }
 .g1{
-  text-transform: initial;
   margin-top: 15px;
-  margin-left: 2cm;
+  text-transform: initial;
+  margin-left: 1cm;
 }
 .h1{
-  text-transform: none;
+  text-transform: initial;
   margin-top: 15px;
   margin-left: 1cm;
 }
@@ -461,7 +503,7 @@
 }
 
 .kecuali{
-  width: 99%;
+  width: 100%;
   height: 97vh;
   color: whitesmoke;
 }
@@ -618,10 +660,6 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   margin-left: 2cm;
 }
 
-
-
-
-
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
@@ -772,78 +810,22 @@ div.container a
     cursor: pointer;
 }
 
-.red
-{
-    background: #f44336;
-}
-
 .purple
 {
     background: var(--color-back2);
-}
-
-.indigo
-{
-    background: #3f51b5;
 }
 
 .white{
   background: white;
 }
 
-.blue
-{
-    background: #2196f3;
-}
-
-.cyan
-{
-    background: #00bcd4;
-}
-
-.teal
-{
-    background: #009688;
-}
-
-.green
-{
-    background: #4caf50;
-}
-
-.lightGreen
-{
-    background: #8bc34a;
-}
-
-.lime
-{
-    background: #c0ca33;
-}
-
-.yellow
-{
-    background: #fdd835;
-}
-
-.amber
-{
-    background: #ffc107;
+.blue12{
+  background: #f8f9fb;
 }
 
 .white
 {
     background: #ff9800
-}
-
-.deepOrange
-{
-    background: #ff5722;
-}
-
-.brown
-{
-    background: #795548;
 }
 
 .gray
@@ -882,36 +864,11 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     transform: translateY(0px);
 }
 
-/* Top and Bottom borders come in */
-div.topBotomBordersIn a:before, div.topBotomBordersIn a:after
-{
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 2px;
-    background: #FFF;
-    content: "";
-    opacity: 0;
-    transition: all 0.3s;
+.topBotomBordersOut .gone{
+  text-decoration: none;
 }
 
-div.topBotomBordersIn a:before
-{
-    top: 0px;
-    transform: translateY(-10px);
-}
-
-div.topBotomBordersIn a:after
-{
-    bottom: 0px;
-    transform: translateY(10px);
-}
-
-div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
-{
-    opacity: 1;
-    transform: translateY(0px);
-}
+/* top botom border goes out end */
 
 .box{
   width: 1100px;
@@ -924,11 +881,11 @@ div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
 
 .box1{
   width: 1100px;
-  height: 170px;
+  height: 130px;
   background-color: #fcfcfc;
-  border-radius: 10px;
-  margin-top: 3.5cm;
-  margin-left: -19cm;
+  border-radius: 25px;
+  margin-top: 3cm;
+  margin-left: -20cm;
   border: 2px solid #adadad;
 }
 
@@ -937,7 +894,7 @@ div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
   padding-left: 3cm;
 }
 .bebas1{
-  padding-top: 2cm;
+  margin-top: -1cm;
   padding-left: -5cm;
 }
 .block{
@@ -970,4 +927,135 @@ div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
 }
 .list-group-item{
   text-align: left;
+}
+.block-example{
+  border: 3px solid;
+  color: #dd3c3c;
+  padding-left: 5px;
+  padding-top: 7px;
+  padding-right: 7px;
+  padding-bottom: 4px;
+  width: 140px;
+  height: 40px;
+  font-size: 15px;
+  border-radius: 25px;
+  letter-spacing: 1px;
+}
+.login1-progresform{
+  background-color: #f8f8f8;
+  margin-top: 2.5cm;
+  height: 80vh;
+  width: 80%;
+  margin-left: -20cm;
+  margin-right: 3.5cm;
+  border-radius: 20px;
+}
+.langkah{
+  font-size: 30px;
+  font-weight: bold;
+  color: #2bbbad;
+}
+
+.cover{
+  text-align: left;
+}
+
+.galeritext{
+  font-size: 60px;
+  line-height: 5px;
+  font-weight: bold;
+  margin-top: 5.5cm;
+  padding-left: 5cm;
+  margin-left: -9cm;
+}
+
+.textkecil{
+  font-size: 20px;
+  font-weight: bolder;
+  color: grey;
+  padding-top: 1.5cm;
+  padding-left: 10.8cm;
+  line-height: 30px;
+  text-align: left;;
+  margin-left: -14.5cm;
+}
+
+.kelolagal{
+  height: 200vh;
+  width: 100%;
+  display: flex;
+  background-color: #f8f9fb;
+}
+
+.disini{
+  border: 4px solid #58b800;
+  background-color: #58b800;
+  color: #f8f9fb;
+  text-decoration: none;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-top: 9px;
+  padding-right: 7px;
+  padding-bottom: 4px;
+  width: 170px;
+  height: 45px;
+  font-size: 15px;
+  border-radius: 25px;
+  margin-left: 7cm;
+  margin-top: 13cm;
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  letter-spacing: 1px;
+  scroll-behavior: smooth;
+}
+.disini :hover{
+  border: 4px solid #58b800;
+  background-color: #f8f9fb;
+  color: #58b800;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+.table{
+  font-family: 'Montserrat', sans-serif;
+  width: max-content;
+  height: 50vh;
+  margin-top: 3cm;
+  padding-left: -20cm;
+}
+
+.table1{
+  font-family: 'Montserrat', sans-serif;
+  width: max-content;
+  height: 50vh;
+  padding-left: -20cm;
+}
+
+.outerijo{
+  width: 60px;
+  height: 45px;
+  border: 3px solid #58b800;
+  padding-top: 4px;
+  border-radius: 12px;
+  margin-left: 1cm;
+  margin-top: -0.2cm;
+}
+
+.outermerah{
+  width: 60px;
+  height: 45px;
+  border: 3px solid grey;
+  padding-top: 4px;
+  border-radius: 12px;
+  margin-top: -0.2cm;
+  margin-left: 1.5cm;
 }

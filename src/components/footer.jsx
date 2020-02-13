@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LOGO } from './../support/url'
+import LOGO from '../support/img/logoputih.png'
 import {
 	FaFacebookF,
 	FaTwitter,

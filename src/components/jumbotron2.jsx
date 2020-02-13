@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-import { ICON, ICON1, ICON2, ICON3, ICON4 } from '../support/url'
+// import { ICON, ICON1, ICON2, ICON3, ICON4 } from '../support/url'
+import ICON from '../support/img/toa.png'
+import ICON1 from '../support/img/ukm.png'
+import ICON2 from '../support/img/speech.png'
+import ICON3 from '../support/img/teacher.png'
+import ICON4 from '../support/img/pen.png'
 import AOS from 'aos'
 
 

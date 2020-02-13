@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {LINE} from './../support/url'
+import LINE from '../support/img/garis.png'
 
 export class Jumbotron5 extends Component {
     render() {

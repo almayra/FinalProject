@@ -5,6 +5,7 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'semantic-ui-css/semantic.min.css'
 import "mdbreact/dist/css/mdb.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import 'aos/dist/aos.css';
 import "slick-carousel/slick/slick.css"; 
 // import '@trendmicro/react-sidenav/dist/react-sidenav.css';
@@ -15,7 +16,7 @@ import {createStore,applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import * as serviceWorker from './serviceWorker';
 
-const store=createStore(applyMiddleware(Reducers,{},thunk))
+const store=createStore(Reducers,{},applyMiddleware(thunk))
 
 ReactDOM.render(
     <Provider store={store}>

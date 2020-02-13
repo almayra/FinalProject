@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { IMG1,IMG2, LINE } from '../support/url'
+import LINE from '../support/img/garis.png'
+import IMG1 from '../support/img/marketing.png'
+import IMG2 from '../support/img/socialmed.png'
 import { Link } from 'react-router-dom';
 
 export class Jumbotron1 extends Component {

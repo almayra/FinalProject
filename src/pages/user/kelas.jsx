@@ -1,26 +1,26 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom';
-import { IMG1,IMG2, LINE } from '../support/url'
+import CEWE from '../../support/img/kelas.png'
 import {FaUserAlt} from 'react-icons/fa'
-
-
 
 export class Kelas extends Component {
     render() {
         return (
             <div className='login2'>
                 <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
-                        <Link a to='home' style={{color:'black'}}>
+                        <Link a to='beranda' style={{color:'black'}}>
                             BERANDA
                         </Link>
                         <Link a to='kelas' style={{color:'black'}}>
                             KELAS
                         </Link>
-                        <a>GALERI PKC</a>
-                            <FaUserAlt
+                        <Link a to='galeri' style={{color:'black'}}>
+                            GALERI PKC
+                        </Link>                            
+                        <FaUserAlt
                             size={30}
                             style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
-                            />
+                        />
                     </div>    
                 <div className='kecuali'>
                    <div className='box'>
@@ -32,7 +32,7 @@ export class Kelas extends Component {
                         </Link>
                         <img
                         style={{width:'12cm',marginLeft:'-23cm',marginTop:'-3.5cm'}}
-                        src='https://cdn1.imggmi.com/uploads/2020/1/18/51e94102d277d43b2ce9d8a5aa2a5b03-full.png'
+                        src={CEWE}
                         />
                         <div className='block d-flex'>
                             <div className="materi mt-3">
