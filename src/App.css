@@ -417,12 +417,12 @@
 .g1{
   margin-top: 15px;
   text-transform: initial;
-  margin-left: 1cm;
+  margin-left: 0.8cm;
 }
 .h1{
   text-transform: initial;
   margin-top: 15px;
-  margin-left: 1cm;
+  margin-left: 1.2cm;
 }
 .tulisan{
   color: var(--text-color);
