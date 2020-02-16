@@ -20,40 +20,45 @@ class Jumbotron2 extends Component {
                     Apakah saat ini kamu seorang...
                 </div>
                 <div></div>
+
                 <div data-aos="fade-up" data-aos-duration="1000">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-35.5cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-31.5cm'}}/>
                     <img src={ICON} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
                     />
                     <h4 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='a'>a. Marketing Director</h4>
                 </div>
+
                 <div data-aos="fade-up" data-aos-duration="1500">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-24cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-20cm'}}/>
                     <img src={ICON1} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
                     />
                     <h4 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='b'>b. Praktisi UKM</h4>
                 </div>
+
                 <div data-aos="fade-up" data-aos-duration="2000">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-13cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-8.5cm'}}/>
                     <img src={ICON2} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
                     />
                     <h4 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='c'>c. Politisi</h4>
                 </div>
+
                 <div data-aos="fade-up" data-aos-duration="2500">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-2.7cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'0cm'}}/>
                     <img src={ICON3} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
                     />
                     <h4 style={{color:'white',fontSize:'18px',fontWeight:'900px'}} className='d'>d. Dosen Fakultas <br/> Ilmu Komunikasi</h4>
                 </div>
+
                 <div data-aos="fade-up" data-aos-duration="3000">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'2cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'2.5cm'}}/>
                     <img src={ICON4} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
