@@ -32,9 +32,28 @@ export const UserLogin=({username, password})=>{
         if(username===''||password===''){
             dispatch({type:'ERROR_LOGIN', payload:'Pastikan semua terisi'})
         }else{
-            Axios.get(APIURL+'auth/login',{
-                // params
+            console.log('masuk sini')
+            Axios.get(`${APIURL}auth/login`,{
+                params:{
+                    username,
+                    password
+                }
+            }).then(res =>{
+                console.log(res.data)
+                if(res.data.status !== 'error'){
+                    dispatch({type:'LOGIN_SUCCESS', payload:res.data.result})
+                    localStorage.setItem('username', res.data.result.username)
+                    localStorage.setItem('id', res.data.result.id)
+                }else{
+                    dispatch({type: 'LOGIN_ERROR', payload: res.data.message})
+                }
             })
         }
+    }
+}
+
+export const reLogin=res=>{
+    return dispatch=>{
+        dispatch({type: 'LOGIN_SUCCESS', payload:res})
     }
 }

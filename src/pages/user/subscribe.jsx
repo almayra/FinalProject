@@ -2,23 +2,75 @@ import React, { Component } from 'react'
 import {IoMdCheckmarkCircleOutline} from 'react-icons/io'
 import {FaLongArrowAltLeft} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import {Modal,ModalBody,ModalFooter,ModalHeader, CustomInput} from 'reactstrap'
 import GRATIS from '../../support/img/gratis.png'
+import Swal from 'sweetalert2'
 import STANDAR from '../../support/img/standar.png'
+import withReactContent from 'sweetalert2-react-content'
 import PREMIUM from '../../support/img/premium.png'
+import { Button, Icon } from 'semantic-ui-react'
 
+const MySwal=withReactContent(Swal)
 
-export class Subscribe extends Component {
+class Subscribe extends Component {
+    state={
+        modalsubs:false
+    }
+
+    onKirimDataClick=()=>{
+        Swal.fire(
+            'Berhasil!',
+            'Data kamu sudah terkirim, tunggu verifikasi yaa:)',
+            'success'
+        )
+    }
+
     render() {
         return (
             <div className='subscribe'>
-                        <Link to='/kelas' style={{textDecoration:'none',color:'#4b4b4b'}}>
-                            <FaLongArrowAltLeft
-                            style={{marginLeft:'1cm'}}
-                            size={50}
-                            color='#f8f8f8'
-                            className='ikon fadeIn fourth'
-                            />
-                        </Link>
+                <Modal isOpen={this.state.modalsubs} toggle={()=>this.setState({modalsubs:false})}>
+                    <ModalHeader>
+                        <div style={{fontSize:'25px', fontWeight:'bold', alignItems:'center'}}> Pembayaran </div>
+                    </ModalHeader>
+                    <ModalBody>
+                    <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th>Bank</th>
+                            <td style={{textAlign:'center', alignItems:'center'}}>BCA</td>
+                        </tr>
+                        <tr>
+                            <th>No Rekening</th>
+                            <td style={{textAlign:'center', alignItems:'center'}}>7330464989</td>
+                        </tr>
+                        <tr>
+                            <th>Penerima</th>
+                            <td style={{textAlign:'center', alignItems:'center'}}>Almayra</td>
+                        </tr>
+                    </thead>                     
+                    </table>
+                    <div className='mt-5'>
+                        <CustomInput type='file' label='Pilih Bukti Pembayaran' />
+                    </div>
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button animated>
+                        <Button.Content visible onClick={this.onKirimDataClick}>Kirim</Button.Content>
+                        <Button.Content hidden>
+                            <Icon name='arrow right' />
+                        </Button.Content>
+                        </Button>                    
+                    </ModalFooter>
+                </Modal>
+
+                <Link to='/kelas' style={{textDecoration:'none',color:'#4b4b4b'}}>
+                    <FaLongArrowAltLeft
+                    style={{marginLeft:'1cm'}}
+                    size={50}
+                    color='#f8f8f8'
+                    className='ikon fadeIn fourth'
+                    />
+                </Link>
                <div className='d-flex'>
                     <div class="card fadeIn first" style={{width:'20rem',height:'15cm',marginTop:'1.5cm',marginLeft:'2.5cm',borderRadius:'20px'}}>
                     <img class="card-img-top" src={GRATIS} alt="Card image cap"/>
@@ -64,7 +116,7 @@ export class Subscribe extends Component {
                         </ul>
                     </div>
                     <div class="card-body">
-                    <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold',marginTop:'1cm'}}>
+                    <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold',marginTop:'1cm'}} onClick={()=>this.setState({modalsubs:true})} >
                         IDR 75
                         <div style={{fontSize:'12px',fontWeight:'lighter',textTransform:'lowercase'}}>per bulan</div> 
                         </button>
@@ -97,7 +149,7 @@ export class Subscribe extends Component {
                         </ul>
                     </div>
                     <div class="card-body">
-                        <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold'}}>
+                        <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold'}} onClick={()=>this.setState({modalsubs:true})}>
                         IDR 700
                         <div style={{fontSize:'12px',fontWeight:'lighter',textTransform:'lowercase'}}>per tahun</div> 
                         </button>

@@ -28,48 +28,48 @@ export class Performa extends Component {
                     <table class="ui striped table" style={{marginLeft:'-20.5cm', width:'30cm'}}>
                         <thead>
                             <tr>
-                            <th style={{fontFamily:'Montserrat', fontWeight:'bold', fontSize:'15px'}}>Nama</th>
-                            <th style={{fontFamily:'Montserrat', fontWeight:'bold', fontSize:'15px'}}>Tanggal Registrasi</th>
-                            <th style={{fontFamily:'Montserrat', fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
-                            <th style={{fontFamily:'Montserrat', fontWeight:'bold', fontSize:'15px'}}>Status</th>
+                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
+                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Registrasi</th>
+                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
+                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>Tidak Berlangganan</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Tidak Berlangganan</td>
                             </tr>
                             <tr>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>Yes</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Yes</td>
                             </tr>
                             <tr>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>Jill Lewis</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>May 11, 2014</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>jilsewris22@yahoo.com</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>Yes</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jill Lewis</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>May 11, 2014</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jilsewris22@yahoo.com</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Yes</td>
                             </tr>
                             <tr>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>No</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>No</td>
                             </tr>
                             <tr>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>No</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>No</td>
                             </tr>
                             <tr>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
-                                <td style={{fontFamily:'Montserrat', fontWeight:'regular', fontSize:'13px'}}>Yes</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
+                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Yes</td>
                             </tr>
                         </tbody>
                     </table>

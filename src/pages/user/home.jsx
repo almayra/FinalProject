@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import {FaUserAlt} from 'react-icons/fa'
+import {FaUserAlt, FaUserNinja} from 'react-icons/fa'
 import KELAS from '../../support/img/kosong.png'
+import {connect} from 'react-redux'
 
 export class Home extends Component {
+     usernameCap=(username)=>{
+        var nama=username.split('')
+        nama[0]=nama[0].toUpperCase()
+        return nama.join('')
+    }
     render() {
+
         return (
             <div className='App-kelas'>
                 <div className='sidebar'>
@@ -35,7 +42,7 @@ export class Home extends Component {
                     />
                 </div>
                 <div className='kosong'>
-                    Halo, (nama). Kelasmu masih kosong.<br/>
+                    Halo, {this.usernameCap(this.props.username)}. Kelasmu masih kosong.<br/>
                     Tambahkan kelas yang kamu suka! :)
                 </div>
                 <div className='telusuri'>
@@ -47,4 +54,10 @@ export class Home extends Component {
     }
 }
 
-export default Home
+const mapStateToProps=state=>{
+    return{
+        username: state.Auth.username
+    }
+}
+
+export default connect(mapStateToProps)(Home)

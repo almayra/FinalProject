@@ -15,7 +15,6 @@ continue=e=>{
                 <div style={{marginLeft:'9.2cm'}}>
                     <label style={{width:'10cm'}}>
                         <input className='form-control mt-5'
-                        style={{fontFamily:'Montserrat'}}
                         placeholder='Cantumkan Judul Kelas'
                         name='namaKelas'
                         value={namaKelas}
@@ -30,8 +29,7 @@ continue=e=>{
                     <label style={{width:'10cm'}}>
                         <select 
                         className='form-control' 
-                        value={Kategori} 
-                        style={{fontFamily:'Montserrat'}}>
+                        value={Kategori} >
                             <option hidden>--Pilih Kategori--</option>
                             <option>Branding</option>
                             <option>Marketing</option>
@@ -42,7 +40,6 @@ continue=e=>{
                 <div style={{marginTop:'3.5cm', marginLeft:'-10cm'}}>
                     <label style={{width:'10cm'}}>
                         <textarea rows='5' className='form-control mt-5' 
-                        style={{fontFamily:'Montserrat'}}
                         placeholder='Deskripsikan Kelasmu'
                         name='Deskripsi'
                         value={Deskripsi}

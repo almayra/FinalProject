@@ -39,7 +39,7 @@ export class Register extends Component {
 
     render() {
         if (this.props.register) {
-            return <Redirect to='/beranda' />
+            return <Redirect to='/login' />
         }
         return (
             <div className='login1'>

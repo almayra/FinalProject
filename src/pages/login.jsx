@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import {FaLongArrowAltRight} from 'react-icons/fa'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import LOGO from '../support/img/logoitem.png'
 import GAMBAR from '../support/img/login.png'
 import {AiOutlineExclamationCircle} from 'react-icons/ai'
+import {connect} from 'react-redux'
+import { UserLogin } from '../redux/action';
 
 class Login extends Component {
     btnLogin=()=>{
@@ -26,6 +28,9 @@ class Login extends Component {
     }
 
     render() {
+        if(this.props.login){
+            return <Redirect to='/beranda' />
+        }
         return (
             <div>
                 <div className='login1'>
@@ -52,7 +57,7 @@ class Login extends Component {
                                 <div>
                                     <div className="grey-text">
                                     <MDBInput
-                                        label="Email kamu"
+                                        label="Nama kamu"
                                         group
                                         type="text"
                                         validate
@@ -70,7 +75,7 @@ class Login extends Component {
                                     </div>
                                     <Link to='/gantipass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'3.5cm',fontWeight:'200px',textDecoration:'none',color:'black'}}>Lupa Password?</Link>
                                     <div className="text-center mt-5">
-                                    <MDBBtn>Masuk</MDBBtn>
+                                    <MDBBtn onClick={this.btnLogin} >Masuk</MDBBtn>
                                     </div>
                                 </div>
                                 </MDBCol>
@@ -87,4 +92,11 @@ class Login extends Component {
     }
 }
 
-export default Login
+const mapStateToProps=state=>{
+    return{
+        username: state.Auth.username,
+        login: state.Auth.login
+    }
+}
+
+export default connect(mapStateToProps, {UserLogin})(Login)

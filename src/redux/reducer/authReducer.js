@@ -16,6 +16,10 @@ export default (state=INITIAL_STATE, action)=>{
             return {...state,error:action.payload}
         case 'REGIS_LOADING':
             return {...state,loading:true,error:''}
+        case 'LOGIN_SUCCESS':
+            return {...state,...action.payload, login:true}
+        case 'LOGIN_ERROR':
+            return {...state, error:action.payload}
         default:
             return state
     }

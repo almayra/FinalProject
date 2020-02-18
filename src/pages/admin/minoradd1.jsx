@@ -27,7 +27,6 @@ export class MinorAdd1 extends Component {
                 <div style={{marginTop:'1.5cm', marginLeft:'-10cm'}}>
                     <label style={{width:'10cm', fontFamily:'Montserrat'}}>
                         <input className='form-control mt-5 mb-2' 
-                        style={{fontFamily:'Montserrat'}}
                         placeholder='Judul Bab'
                         name='babPelajaran'
                         value={babPelajaran}
@@ -42,7 +41,6 @@ export class MinorAdd1 extends Component {
                 <div style={{marginTop:'3.5cm', marginLeft:'-10cm'}}>
                     <label style={{width:'10cm'}}>
                         <input className='form-control mt-5' 
-                        style={{fontFamily:'Montserrat'}}
                         placeholder='Masukkan URL Materi'
                         name='Materi'
                         value={Materi}
@@ -52,7 +50,7 @@ export class MinorAdd1 extends Component {
                     </label>
                 </div>
 
-                <div style={{fontSize:'12px', color:'#2bbbad', fontWeight:'900px', marginTop:'5.8cm', marginLeft:'-2.8cm', cursor:'pointer', fontFamily:'Montserrat'}}>
+                <div style={{fontSize:'12px', color:'#2bbbad', fontWeight:'900px', marginTop:'5.8cm', marginLeft:'-2.8cm', cursor:'pointer'}}>
                     + Tambah Materi
                 </div>
                 <div style={{marginLeft:'0.2cm'}}>
