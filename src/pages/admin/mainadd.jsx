@@ -74,7 +74,7 @@ export class Mainadd extends Component {
                         <div>
                             <FaUserAlt
                             size={30}
-                            style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
+                            style={{marginTop:'-1.5cm',marginLeft:'38cm',color:'#4b4b4b'}}
                             />
                         </div>
                 </div>

@@ -9,6 +9,11 @@ import {connect} from 'react-redux'
 import { UserLogin } from '../redux/action';
 
 class Login extends Component {
+    state={
+        error:'',
+        loading:false
+    }
+
     btnLogin=()=>{
         var username=this.username.value
         var password=this.password.value
@@ -23,7 +28,7 @@ class Login extends Component {
         if(this.props.error===''){
             return null
         }else{
-            return <p className='block-example border border-danger' style={{width:'90%', marginLeft:'1cm',color:'#dd3c3c', fontSize:'12px',paddingTop:'11px'}}> <AiOutlineExclamationCircle size={20} className='mr-2' style={{marginTop:'-5px'}} /> {this.props.error} </p>
+            return <p className='mt-2 block-example border border-danger' style={{width:'7cm',color:'#dd3c3c', fontSize:'12px',paddingTop:'11px'}}> <AiOutlineExclamationCircle size={20} className='mr-2' style={{marginTop:'-5px'}} /> {this.props.error} </p>
         }
     }
 
@@ -74,6 +79,9 @@ class Login extends Component {
                                     />
                                     </div>
                                     <Link to='/gantipass' style={{fontSize:'12px',marginTop:'-0.5cm',marginLeft:'3.5cm',fontWeight:'200px',textDecoration:'none',color:'black'}}>Lupa Password?</Link>
+                                    <div>
+                                        {this.renderError()}
+                                    </div>
                                     <div className="text-center mt-5">
                                     <MDBBtn onClick={this.btnLogin} >Masuk</MDBBtn>
                                     </div>
@@ -94,6 +102,7 @@ class Login extends Component {
 
 const mapStateToProps=state=>{
     return{
+        error:state.Auth.error,
         username: state.Auth.username,
         login: state.Auth.login
     }

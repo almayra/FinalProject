@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import {FaUserAlt, FaUserNinja} from 'react-icons/fa'
+import {FaUserAlt} from 'react-icons/fa'
 import KELAS from '../../support/img/kosong.png'
 import {connect} from 'react-redux'
 
@@ -10,8 +10,8 @@ export class Home extends Component {
         nama[0]=nama[0].toUpperCase()
         return nama.join('')
     }
-    render() {
 
+    render() {
         return (
             <div className='App-kelas'>
                 <div className='sidebar'>
