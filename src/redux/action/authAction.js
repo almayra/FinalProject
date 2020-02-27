@@ -1,11 +1,11 @@
 import Axios from 'axios'
 import {APIURL} from './../../support/url'
 
-export const LogoutSuccessAction=()=>{
-    return{
-        type:'LOGOUT_SUCCESS',
-    }
-}
+// export const LogoutSuccessAction=()=>{
+//     return{
+//         type:'LOGOUT_SUCCESS',
+//     }
+// }
 
 export const UserRegister=({username, email, password})=>{
     return (dispatch)=>{
@@ -30,7 +30,7 @@ export const UserRegister=({username, email, password})=>{
 export const UserLogin=({username, password})=>{
     return (dispatch)=>{
         if(username===''||password===''){
-            dispatch({type:'ERROR_LOGIN', payload:'Pastikan semua terisi'})
+            dispatch({type:'LOGIN_ERROR', payload:'Pastikan semua terisi'})
         }else{
             console.log('masuk sini')
             Axios.get(`${APIURL}auth/login`,{
@@ -55,5 +55,11 @@ export const UserLogin=({username, password})=>{
 export const reLogin=res=>{
     return dispatch=>{
         dispatch({type: 'LOGIN_SUCCESS', payload:res})
+    }
+}
+
+export const LogError=()=>{
+    return(dispatch)=>{
+        dispatch({type:'LOGIN_ERROR', payload:''})
     }
 }

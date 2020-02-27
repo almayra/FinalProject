@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import {FaLongArrowAltRight} from 'react-icons/fa'
 
 export class MinorAdd extends Component {
-continue=e=>{
-    e.preventDefault()
-    this.props.nextStep()
-}
+
+    state={
+        kat:0
+    }
+    continue=e=>{
+        e.preventDefault()
+        this.props.nextStep()
+    }
+
 
     render() {
         const {handleChange, namaKelas, Kategori, Deskripsi}= this.props;
-        // console.log(this.props.handleChange)
+        console.log('kat',this.props.Kategori)
         return (
             <div className='d-flex'>
                 <div style={{marginLeft:'9.2cm'}}>
@@ -19,20 +24,22 @@ continue=e=>{
                         name='namaKelas'
                         value={namaKelas}
                         type='text'
+                        ref='judul'
                         onChange={handleChange('namaKelas')}
                         />
                     </label>
-                    <p style={{fontSize:'11px',marginLeft:'-40px'}}>Contoh : Iklan Radio yang Menjual, Membuat Web Sederhana</p>
+                    <p style={{fontSize:'11px',marginLeft:'-60px'}}>Contoh : Iklan Radio yang Menjual, Membuat Web Sederhana</p>
                 </div>
 
                 <div style={{marginTop:'3cm', marginLeft:'-10cm'}}>
                     <label style={{width:'10cm'}}>
                         <select 
                         className='form-control' 
-                        value={Kategori} >
-                            <option hidden>--Pilih Kategori--</option>
-                            <option>Branding</option>
-                            <option>Marketing</option>
+                        onChange={handleChange('Kategori')}
+                         >
+                            <option hidden disabled>--Pilih Kategori--</option>
+                            <option value={1}>Branding</option>
+                            <option value={2}>Marketing</option>
                         </select>
                     </label>
                 </div>
@@ -42,6 +49,7 @@ continue=e=>{
                         <textarea rows='5' className='form-control mt-5' 
                         placeholder='Deskripsikan Kelasmu'
                         name='Deskripsi'
+                        ref='deskripsi'
                         value={Deskripsi}
                         type=''
                         onChange={handleChange('Deskripsi')}

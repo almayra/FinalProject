@@ -28,7 +28,7 @@ class Login extends Component {
         if(this.props.error===''){
             return null
         }else{
-            return <p className='mt-2 block-example border border-danger' style={{width:'7cm',color:'#dd3c3c', fontSize:'12px',paddingTop:'11px'}}> <AiOutlineExclamationCircle size={20} className='mr-2' style={{marginTop:'-5px'}} /> {this.props.error} </p>
+            return <p className='mt-2 block-example border border-danger' style={{width:'6.5cm',color:'#dd3c3c', fontSize:'12px',paddingTop:'11px'}}> <AiOutlineExclamationCircle size={20} className='mr-2' style={{marginTop:'-5px'}} /> {this.props.error} </p>
         }
     }
 

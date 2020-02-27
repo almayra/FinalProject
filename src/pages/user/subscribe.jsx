@@ -90,7 +90,8 @@ class Subscribe extends Component {
                     <div class="card-body">
                         <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold',marginTop:'1.4cm'}} disabled>
                         IDR 0
-                        </button>                    
+                        </button>
+                        <p className='mt-3' style={{color:'grey', marginBottom:'-35px'}}>Harga dalam ribuan rupiah</p>                    
                         </div>
                     </div>
 

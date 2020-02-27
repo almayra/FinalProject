@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import {FaLongArrowAltRight, FaLongArrowAltLeft} from 'react-icons/fa'
 import { Table, CustomInput } from 'reactstrap';
+import Axios from 'axios';
+import { APIURL } from '../../support/url';
 
 export class MinorAdd1 extends Component {
+
     continue=e=>{
         e.preventDefault()
         this.props.nextStep()
@@ -14,13 +17,18 @@ export class MinorAdd1 extends Component {
     }
 
     render() {
-        const {handleChange, Materi, babPelajaran }= this.props;
-        // console.log(this.props.handleChange)
+        const {handleChange, Materi, babPelajaran, onSaveData, addimagefile, onChangeImage }= this.props;
+        console.log(this.props.addimagefile)
         return (
             <div className='d-flex'>
                 <div style={{marginLeft:'9.2cm'}}>
                     <label style={{width:'10cm', fontFamily:'Montserrat'}}>
-                        <CustomInput type='file' className='cover mt-5' style={{textAlign:'left', width:'10cm'}} label='Pilih Cover Kelas' />
+                        <CustomInput type='file' 
+                        className='cover mt-5' 
+                        style={{textAlign:'left', width:'10cm'}} 
+                        label='Pilih Cover Kelas'
+                        onChange={onChangeImage}
+                        />
                     </label>
                 </div>
 
@@ -29,11 +37,12 @@ export class MinorAdd1 extends Component {
                         <input className='form-control mt-5 mb-2' 
                         placeholder='Judul Bab'
                         name='babPelajaran'
+                        ref='babPelajaran'
                         value={babPelajaran}
                         type='text'
                         onChange={handleChange('babPelajaran')}
                         />
-                        <p style={{fontSize:'11px',marginRight:'5.5cm'}}>Contoh : 38 Tips Copywriting</p>
+                        <p style={{fontSize:'11px',marginRight:'6cm'}}>Contoh : 38 Tips Copywriting</p>
                     </label>
                 </div>
 
@@ -43,6 +52,7 @@ export class MinorAdd1 extends Component {
                         <input className='form-control mt-5' 
                         placeholder='Masukkan URL Materi'
                         name='Materi'
+                        ref='materi'
                         value={Materi}
                         type='text'
                         onChange={handleChange('Materi')}
@@ -57,8 +67,8 @@ export class MinorAdd1 extends Component {
                     <button className='next' onClick={this.back} style={{marginTop:'9.3cm', marginLeft:'-10cm'}}>
                         <FaLongArrowAltLeft size={32}/>
                     </button>
-                    <button className='next' onClick={this.continue} style={{marginTop:'9.5cm', marginLeft:'6cm'}}>
-                        <FaLongArrowAltRight size={32}/>
+                    <button className='next' style={{marginTop:'9.5cm', marginLeft:'6cm', width:'100px'}} onClick={onSaveData} >
+                        <p>Simpan</p>
                     </button>
                 </div>
             </div>
