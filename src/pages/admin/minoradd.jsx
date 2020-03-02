@@ -37,7 +37,7 @@ export class MinorAdd extends Component {
                         className='form-control' 
                         onChange={handleChange('Kategori')}
                          >
-                            <option hidden disabled>--Pilih Kategori--</option>
+                            <option hidden selected>--Pilih Kategori--</option>
                             <option value={1}>Branding</option>
                             <option value={2}>Marketing</option>
                         </select>

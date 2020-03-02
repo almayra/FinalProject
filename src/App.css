@@ -951,6 +951,15 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
   margin-right: 3.5cm;
   border-radius: 20px;
 }
+.login1-detailkelas{
+  background-color: #f5f3f3;
+  margin-top: 2.5cm;
+  height: 130vh;
+  width: 80%;
+  margin-left: -20cm;
+  margin-right: 3.5cm;
+  border-radius: 20px;
+}
 .langkah{
   font-size: 30px;
   font-weight: bold;
@@ -1059,4 +1068,17 @@ html {
   border-radius: 12px;
   margin-top: -0.2cm;
   margin-left: 1.5cm;
+  cursor: pointer;
+}
+
+.detailtext{
+  padding-top: 50px;
+  padding-left: 50px;
+  height: 400px;
+  width: 300px;
+}
+.kelasloop{
+  display: inline-block;
+  justify-content: center;
+  margin-top: 20px;
 }

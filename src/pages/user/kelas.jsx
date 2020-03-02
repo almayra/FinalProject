@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import CEWE from '../../support/img/kelas.png'
 import {FaUserAlt} from 'react-icons/fa'
+import IMG1 from '../../support/img/marketing.png'
+import IMG2 from '../../support/img/socialmed.png'
 
 export class Kelas extends Component {
     render() {
@@ -50,6 +52,29 @@ export class Kelas extends Component {
                         </div>
                    </div>
                 </div>
+
+                <div className='d-flex' style={{marginTop:'10.5cm'}}>
+                        <Link to='/kelasdetail' style={{marginLeft:'-32cm',marginTop:'1cm'}}>
+                            <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'20rem'}}>
+                            <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem'}} src={IMG1} alt="Card image cap"/>
+                                <div class="card-body">
+                                    <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>Digital Marketing</p>
+                                    <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>Strategi Digital Marketing</p>
+                                </div>
+                            </div>
+                        </Link>
+
+                        <div style={{marginLeft:'1cm',marginTop:'1cm'}}>
+                            <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'20rem'}}>
+                            <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem'}} src={IMG2} alt="Card image cap"/>
+                            <div class="card-body">
+                                <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>Copywriting</p>
+                                <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>Copywriting yang Menjual</p>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
             </div>
         )
     }
