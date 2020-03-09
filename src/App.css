@@ -902,7 +902,7 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
   width: 1100px;
   height: 400px;
   border-radius: 30px;
-  margin-top: -1.5cm;
+  margin-top: -2cm;
   margin-left: 0cm;
 }
 .materi{
@@ -1058,6 +1058,7 @@ html {
   border-radius: 12px;
   margin-left: 1cm;
   margin-top: -0.2cm;
+  cursor: pointer;
 }
 
 .outermerah{
@@ -1078,7 +1079,18 @@ html {
   width: 300px;
 }
 .kelasloop{
-  display: inline-block;
-  justify-content: center;
+  position: relative;
   margin-top: 20px;
+  margin-left: -20rem;
+	display: grid;
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: repeat(3, 400px);
+}
+.kelasloop1{
+  position: relative;
+  margin-top: 20px;
+  margin-left: -10cm;
+	display: grid;
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: repeat(3, 10px);
 }

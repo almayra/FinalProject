@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {FaUserAlt} from 'react-icons/fa'
 import MinorAdd from './minoradd'
 import MinorAdd1 from './minoradd1'
 import Axios from 'axios';
 import { APIURL } from '../../support/url';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal=withReactContent(Swal)
 
 
 export class Mainadd extends Component {
@@ -97,14 +101,21 @@ export class Mainadd extends Component {
             idkategori            
         }
 
-            var Headers={
-                headers:{
-                    'Content-Type':'multipart/form-data'
-                }
+        var Headers={
+            headers:{
+                'Content-Type':'multipart/form-data'
             }
+        }
+
         console.log(dataKelas)
         formdata.append('image', foto)
         formdata.append('data', JSON.stringify(dataKelas))
+
+        if(judul===''||bab===''||materi===''||deskripsi===''||idkategori===''||foto===''){
+            MySwal.fire('Gagal', 'Kamu belum masukin semuanya sayang','error')
+        }else{
+            MySwal.fire('Berhasil', 'Berhasil simpan data cinta!', 'success')
+        }
 
         Axios.post(`${APIURL}kelas/tambahkelas`, formdata, Headers)
         .then(res =>{
@@ -113,6 +124,7 @@ export class Mainadd extends Component {
             console.log(err)
         })
         console.log(this.state)
+
     }
 
     render() {

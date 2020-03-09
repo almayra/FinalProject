@@ -1,25 +1,36 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import {FaUserAlt} from 'react-icons/fa'
-import IMG1 from '../../support/img/marketing.png'
-import IMG2 from '../../support/img/socialmed.png'
-import {Modal,ModalBody,ModalFooter,ModalHeader} from 'reactstrap'
 import {MdEdit} from 'react-icons/md'
 import {IoMdTrash} from 'react-icons/io'
 import Axios from 'axios'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, FormText, CustomInput, Button } from 'reactstrap'
 import {APIURL, APIURLIMG} from '../../support/url'
+
 
 export class Admin extends Component {
     state={
+        modaledit:false,
         modalprofil:false,
-        cardKelas:[]
+        cardKelas:[],
+        dataedit: [],
+        kategori:[]
     }
 
     componentDidMount(){
         Axios.get(`${APIURL}kelas/getkelas`)
         .then(res1 =>{
             this.setState({cardKelas:res1.data})
-            console.log('get kelas', res1.data)
+            // console.log('get kelas', res1.data)
+            console.log(this.state.cardKelas)
+        }).catch(err =>{
+            console.log(err)
+        })
+        Axios.get(`${APIURL}kelas/getkategori`)
+        .then(res1 =>{
+            this.setState({kategori:res1.data})
+            // console.log('get kelas', res1.data)
+            console.log(this.state.kategori)
         }).catch(err =>{
             console.log(err)
         })
@@ -30,15 +41,15 @@ export class Admin extends Component {
         if(card.length){
             return card.map((val, index)=>{
                 return(
-                        <div style={{marginLeft:'-20cm',marginRight:'4cm',textAlign:'center',justifyContent:'center'}} className='kelasloop'>
-                            <div className='d-flex'>
-                                <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'26rem'}}>
-                                <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={IMG1} alt="Card image cap"/>
-                                    <div class="card-body">
-                                    <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
-                                    <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>
+                        <div style={{textAlign:'center',justifyContent:'center',marginLeft:'-30rem'}} >
+                            <div>
+                                <div className="card" style={{width: '20rem', borderRadius:'2rem', height:'26rem'}}>
+                                <img className="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
+                                    <div className="card-body">
+                                    <p className="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
+                                    <p className="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>
                                         <div className='d-flex'>
-                                            <div className='outerijo'> <MdEdit color='#58b800' size={32} /> </div>
+                                            <div className='outerijo' onClick={()=>this.onEditClick(index)} > <MdEdit color='#58b800' size={32} /> </div>
                                             <div className='outermerah' onClick={()=>this.onDeleteClick(index)}> <IoMdTrash color='grey' size={32} /> </div>
                                         </div>
                                     </div>
@@ -62,24 +73,116 @@ export class Admin extends Component {
         Axios.delete(`${APIURL}kelas/deletekelas/${selectedId}`)
         .then((res)=>{
             console.log('berhasil', res.data)
+            this.setState({cardKelas:res.data.dataProduct})
         }).catch((err)=>{
             console.log('error', err)
         })
     }
 
+    onEditClick=(index)=>{
+        let cardKelas=this.state.cardKelas
+        this.setState({modaledit:true, dataedit: cardKelas[index]})
+        console.log(this.state.dataedit)
+    }
+
+    onSaveEditClick=()=>{
+        var idEdit=this.state.dataedit.id
+        var formdata=new FormData()
+        var judul=this.refs.editnamaKelas.value 
+        var deskripsi=this.refs.editdeskripsi.value
+        var cover=this.state.addImageFile
+        var idkategori=this.state.editkategori
+        var materi=this.refs.editmateri.value
+        var bab=this.refs.editbabPelajaran.value
+        var dataedit={
+            bab,
+            materi,
+            judul,
+            deskripsi,
+            idkategori   
+        }
+
+        var Headers = {
+            headers : {
+                'Content-Type':'multipart/form-data'
+            }
+        }
+
+        formdata.append('image', cover)
+        formdata.append('data', JSON.stringify(dataedit))
+
+        Axios.put(`${APIURL}kelas/editkelas/${idEdit}`, formdata, Headers)
+        .then(res =>{
+            this.setState({modaledit: false, cardKelas:res.data})
+        }).catch(err =>{
+            console.log(err)
+        })
+    }
+
+    onChangeImgEdit=(event)=>{
+        var file=event.target.files[0]
+        if(file){
+            this.setState({editImageFile:event.target.files[0]})
+        } else {
+            alert('Masukkan foto')
+        }
+    }
+
+    renderSelect=()=>{
+        var namakategori=this.state.kategori
+        if(namakategori){
+            return namakategori.map((val, index)=>{
+                console.log(val.namakategori);
+                return <option value={val.id} key={index} >{val.namakategori}</option>
+            })
+        }else{
+            return <h1>loading ...</h1>
+        }
+    }
+
+    onChangeKategori=(e)=>{
+        const {value}=e.target
+        this.setState({idkategori:value})
+    }
+
     render() {
         return (
             <div className='login1-admin'>
-                <Modal isOpen={this.state.modalprof} toggle={()=>this.setState({modalprof:false})}>
+               <Modal isOpen={this.state.modaledit} toggle={() => this.setState({ modaledit: false })} >
                     <ModalHeader>
-                        EDIT STUDIOS
+                        Edit Kelas
                     </ModalHeader>
                     <ModalBody>
-                        <input type='text' className='form-control mb-3' ref='editstudio' placeholder='Studio name'/>
-                        <input type='number' className='form-control' ref='editkursi' placeholder='Seats'/>
+                        <Form>
+                            <FormGroup>
+                                <input class='form-control' type="text" ref="editnamaKelas" placeholder='Nama Kelas' />
+                            </FormGroup>
+                            <FormGroup>
+                                <label style={{width:'33.5rem'}} >
+                                    <select 
+                                    className='form-control'>
+                                        {this.renderSelect()}
+                                    </select>
+                                </label>
+                            </FormGroup>
+                            <FormGroup>
+                                <textarea className='form-control' type="text" placeholder="Deskripsi" ref="editdeskripsi" />
+                            </FormGroup>
+                            <FormGroup>
+                                {/* <FormText >Foto</FormText> */}
+                                <CustomInput type="file" name="file" label='Pilih Cover Kelas' onChange={this.onChangeImgEdit} />
+                            </FormGroup>
+                            <FormGroup>
+                                <input class='form-control' type="text" ref="editbabPelajaran" placeholder='Judul Bab' />
+                            </FormGroup>
+                            <FormGroup>
+                                <input class='form-control' type="text" ref="editmateri" placeholder='Materi Kelas' />
+                            </FormGroup>
+                        </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <button type="button" className="btn btn-primary" onClick={this.onClickEditStudio}>Save Change</button>
+                        <Button variant='dark' onClick={this.onSaveEditClick}>Simpan</Button>
+                        <Button variant='dark' onClick={() => this.setState({ modaledit: false })}>Batal</Button>
                     </ModalFooter>
                 </Modal>
 
@@ -92,8 +195,10 @@ export class Admin extends Component {
                         </Link>
                         <Link a to='/transaksi' style={{color:'black'}}>
                             TRANSAKSI
+                        </Link>     
+                        <Link a to='/admingaleri' style={{color:'black'}}>
+                            KELOLA GALERI
                         </Link>                        
-                        <a>KELOLA GALERI</a>
                         <div>
                             <FaUserAlt
                             size={30}
@@ -110,41 +215,9 @@ export class Admin extends Component {
                             Mulai Unggah Kelasmu
                         </div>
                     </div>
-                    <div>
+                    <div className='kelasloop'>
                         {this.renderCard()}
                     </div>
-{/*                     
-                    <div className='d-flex'>
-                        <div style={{marginLeft:'-20cm',marginTop:'1cm'}}>
-                            <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'24rem'}}>
-                            <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem'}} src={IMG1} alt="Card image cap"/>
-                                <div class="card-body">
-                                    <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>Digital Marketing</p>
-                                    <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>Strategi Digital Marketing</p>
-                                    <div className='d-flex'>
-                                        <div className='outerijo'> <MdEdit color='#58b800' size={32} /> </div>
-                                        <div className='outermerah'> <IoMdTrash color='grey' size={32} /> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style={{marginLeft:'1cm',marginTop:'1cm'}}>
-                            <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'24rem'}}>
-                            <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem'}} src={IMG2} alt="Card image cap"/>
-                            <div class="card-body">
-                                <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>Copywriting</p>
-                                <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>Copywriting yang Menjual</p>
-                                <div className='d-flex'>
-                                    <div className='outerijo'> <MdEdit color='#58b800' size={32} /> </div>
-                                    <div className='outermerah'> <IoMdTrash color='grey' size={32} /> </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-
-                    </div> */}
-
                 </div>
             </div>
         )

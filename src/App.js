@@ -24,6 +24,7 @@ import Galeri from './pages/user/galeri'
 import Transaksi from './pages/admin/transaksi';
 import Performa from './pages/admin/performa';
 import Kelasdetail from './pages/user/kelasdetail';
+import adminGaleri from './pages/admin/admingaleri'
 
 
 
@@ -55,7 +56,8 @@ function App() {
         <Route path={'/galeri'} component={Galeri} exact/>
         <Route path={'/transaksi'} component={Transaksi} exact/>
         <Route path={'/performa'} component={Performa} exact/>
-        <Route path={'/kelasdetail'} component={Kelasdetail} exact/>
+        <Route path={'/kelasdetail/:id'} component={Kelasdetail} exact/>
+        <Route path={'/admingaleri'} component={adminGaleri} exact/>
         <Route path={'/*'} exact component={Notfound} />
         <Route path='/404' component={Notfound} exact/>
       </Switch>
