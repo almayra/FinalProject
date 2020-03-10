@@ -31,7 +31,6 @@ export class Performa extends Component {
                             <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
                             <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Registrasi</th>
                             <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
-                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,37 +38,31 @@ export class Performa extends Component {
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Tidak Berlangganan</td>
                             </tr>
                             <tr>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Yes</td>
                             </tr>
                             <tr>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jill Lewis</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>May 11, 2014</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>jilsewris22@yahoo.com</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Yes</td>
                             </tr>
                             <tr>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>No</td>
-                            </tr>
+                           </tr>
                             <tr>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>No</td>
                             </tr>
                             <tr>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
                                 <td style={{ fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Yes</td>
                             </tr>
                         </tbody>
                     </table>

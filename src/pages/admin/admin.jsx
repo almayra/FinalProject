@@ -12,6 +12,7 @@ export class Admin extends Component {
     state={
         modaledit:false,
         modalprofil:false,
+        editImageFile:null,
         cardKelas:[],
         dataedit: [],
         kategori:[]
@@ -90,13 +91,15 @@ export class Admin extends Component {
         var formdata=new FormData()
         var judul=this.refs.editnamaKelas.value 
         var deskripsi=this.refs.editdeskripsi.value
-        var cover=this.state.addImageFile
+        var cover=this.state.editImageFile
         var idkategori=this.state.editkategori
         var materi=this.refs.editmateri.value
         var bab=this.refs.editbabPelajaran.value
+        console.log(cover)
         var dataedit={
             bab,
             materi,
+            cover,
             judul,
             deskripsi,
             idkategori   
@@ -121,8 +124,10 @@ export class Admin extends Component {
 
     onChangeImgEdit=(event)=>{
         var file=event.target.files[0]
+        console.log('img', file)
         if(file){
             this.setState({editImageFile:event.target.files[0]})
+            console.log(this.state.editImageFile)
         } else {
             alert('Masukkan foto')
         }
@@ -155,28 +160,49 @@ export class Admin extends Component {
                     <ModalBody>
                         <Form>
                             <FormGroup>
-                                <input class='form-control' type="text" ref="editnamaKelas" placeholder='Nama Kelas' />
+                                <input class='form-control'
+                                type="text" 
+                                ref="editnamaKelas" 
+                                placeholder='Nama Kelas'
+                                defaultValue={this.state.dataedit.judul}  
+                                />
                             </FormGroup>
                             <FormGroup>
                                 <label style={{width:'33.5rem'}} >
                                     <select 
                                     className='form-control'>
+                                        <option selected hidden> --Ganti Kategori-- </option>
                                         {this.renderSelect()}
                                     </select>
                                 </label>
                             </FormGroup>
                             <FormGroup>
-                                <textarea className='form-control' type="text" placeholder="Deskripsi" ref="editdeskripsi" />
+                                <textarea 
+                                className='form-control' 
+                                type="text" 
+                                placeholder="Deskripsi" 
+                                ref="editdeskripsi"
+                                defaultValue={this.state.dataedit.deskripsi}
+                                />
                             </FormGroup>
                             <FormGroup>
-                                {/* <FormText >Foto</FormText> */}
                                 <CustomInput type="file" name="file" label='Pilih Cover Kelas' onChange={this.onChangeImgEdit} />
                             </FormGroup>
                             <FormGroup>
-                                <input class='form-control' type="text" ref="editbabPelajaran" placeholder='Judul Bab' />
+                                <input class='form-control' 
+                                type="text" 
+                                ref="editbabPelajaran" 
+                                placeholder='Judul Bab'
+                                defaultValue={this.state.dataedit.bab}
+                                />
                             </FormGroup>
                             <FormGroup>
-                                <input class='form-control' type="text" ref="editmateri" placeholder='Materi Kelas' />
+                                <input class='form-control' 
+                                type="text" 
+                                ref="editmateri" 
+                                placeholder='Materi Kelas' 
+                                defaultValue={this.state.dataedit.materi}
+                                />
                             </FormGroup>
                         </Form>
                     </ModalBody>

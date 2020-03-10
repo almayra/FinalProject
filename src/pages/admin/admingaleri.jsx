@@ -28,6 +28,9 @@ export class AdminGaleri extends Component {
                             />
                         </div>
                 </div>
+                <div style={{marginRight:'8rem', marginTop:'8rem', color:'#8474A1'}} className='tambahfoto'>
+                    Tambah Foto
+                </div>
             </div>
         )
     }

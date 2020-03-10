@@ -31,7 +31,7 @@ export class Transaksi extends Component {
                                 <th></th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Berlangganan</th>
-                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat E-mail</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Berakhir</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Paket Belajar</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Bukti Pembayaran</th>
                             </tr>
@@ -44,8 +44,8 @@ export class Transaksi extends Component {
                                     </div>
                                 </td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
-                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
-                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
+                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 13, 2013</td>
+                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>Desember 24, 2014</td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>Standar</td>
                                     <td></td>
                                 </tr>
@@ -57,7 +57,7 @@ export class Transaksi extends Component {
                                 </td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
-                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
+                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>Desember 24, 2014</td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>Standar</td>
                                     <td></td>
                                 </tr>
@@ -69,7 +69,7 @@ export class Transaksi extends Component {
                                 </td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jill Lewis</td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>May 11, 2014</td>
-                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>jilsewris22@yahoo.com</td>
+                                    <td style={{ fontWeight:'regular', fontSize:'13px'}}>Desember 24, 2014</td>
                                     <td style={{ fontWeight:'regular', fontSize:'13px'}}>Premium</td>
                                     <td></td>
                                 </tr>
