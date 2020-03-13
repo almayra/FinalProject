@@ -1,8 +1,41 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import {FaUserAlt} from 'react-icons/fa'
+import { APIURL } from '../../support/url';
+import { Card } from 'reactstrap';
+import Axios from 'axios'
+
 
 export class Performa extends Component {
+    state={
+        datauser:[]
+    }
+
+    componentDidMount(){
+        Axios.get(`${APIURL}auth/datauser`)
+        .then(res1 =>{
+            this.setState({datauser:res1.data})
+            console.log(this.state.datauser)
+        }).catch(err =>{
+            console.log(err)
+        })
+    }
+
+    renderTable=()=>{
+        var table=this.state.datauser
+        if(Card.length){
+            return table.map((val, index)=>{
+                return(
+                        <tr>
+                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.username} </td>
+                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.email} </td>
+                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.status} </td>
+                        </tr>
+                )
+            })
+        }
+    }
+
     render() {
         return (
             <div className='login1'>
@@ -29,41 +62,12 @@ export class Performa extends Component {
                         <thead>
                             <tr>
                             <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
-                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Registrasi</th>
                             <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
+                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                            </tr>
-                            <tr>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
-                            </tr>
-                            <tr>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jill Lewis</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>May 11, 2014</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jilsewris22@yahoo.com</td>
-                            </tr>
-                            <tr>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                           </tr>
-                            <tr>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>John Lilki</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>September 14, 2013</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jhlilk22@yahoo.com</td>
-                            </tr>
-                            <tr>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>Jamie Harington</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>January 11, 2014</td>
-                                <td style={{ fontWeight:'regular', fontSize:'13px'}}>jamieharingonton@yahoo.com</td>
-                            </tr>
+                            {this.renderTable()}
                         </tbody>
                     </table>
                 </div>

@@ -10,7 +10,7 @@ export class Jumbotron5 extends Component {
                 </div>
                 <div>
                     <div style={{marginLeft:'-33.3cm',marginTop:'1cm'}} data-aos="fade-down-left" data-aos-duration="1000">
-                        <div class="card" style={{width:'24rem',borderRadius:'1rem'}}>
+                        <div class="card" style={{width:'24rem',borderRadius:'1rem', height:'220px'}}>
                             <div class="card-body">
                                 <p className='mt-3' style={{fontSize:'16px',color:'#222E35',fontWeight:'700px'}}>Tiap hari saya makan sarden mas bernard, sampai badan saya licin kalau berenang cepat sekali</p>
                             </div>

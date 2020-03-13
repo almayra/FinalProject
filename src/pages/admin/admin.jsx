@@ -4,9 +4,12 @@ import {FaUserAlt} from 'react-icons/fa'
 import {MdEdit} from 'react-icons/md'
 import {IoMdTrash} from 'react-icons/io'
 import Axios from 'axios'
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, FormText, CustomInput, Button } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, CustomInput, Button } from 'reactstrap'
 import {APIURL, APIURLIMG} from '../../support/url'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
+const MySwal=withReactContent(Swal)
 
 export class Admin extends Component {
     state={
@@ -67,17 +70,42 @@ export class Admin extends Component {
     }
 
     onDeleteClick=(index)=>{
-        console.log('delete data',this.state.cardKelas)
-        var deletekelas=this.state.cardKelas
-        var selectedId=deletekelas[index].id
-        console.log(selectedId)
-        Axios.delete(`${APIURL}kelas/deletekelas/${selectedId}`)
-        .then((res)=>{
-            console.log('berhasil', res.data)
-            this.setState({cardKelas:res.data.dataProduct})
-        }).catch((err)=>{
-            console.log('error', err)
+        MySwal.fire({
+            title: `Hapus ${this.state.cardKelas[index].judul}?`,
+            icon:'question',
+            showCancelButton:true,
+            confirmButtonText:'Iya, hapus',
+            cancelButtonText:'Tidak, gajadi',
+            reverseButtons:true
+        }).then((result)=>{
+            if(result.value){
+                var deletekelas=this.state.cardKelas
+                var selectedId=deletekelas[index].id
+                console.log(selectedId)
+                Axios.delete(`${APIURL}kelas/deletekelas/${selectedId}`)
+                .then((res)=>{
+                    console.log('berhasil', res.data)
+                    this.setState({cardKelas:res.data.dataProduct})
+                }).catch((err)=>{
+                    console.log('error', err)
+                })
+                deletekelas.splice(index, 1)
+                MySwal.fire(
+                    'Terhapus!',
+                    'Datamu berhasil dihapus',
+                    'success'
+                )
+            }else if(
+                result.dismiss===Swal.DismissReason.cancel
+            ){
+                MySwal.fire(
+                    'Gagal',
+                    '',
+                    'error'
+                )
+            }
         })
+
     }
 
     onEditClick=(index)=>{
@@ -207,8 +235,8 @@ export class Admin extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button variant='dark' onClick={this.onSaveEditClick}>Simpan</Button>
-                        <Button variant='dark' onClick={() => this.setState({ modaledit: false })}>Batal</Button>
+                        <Button color="cyan lighten-2" onClick={this.onSaveEditClick}>Simpan</Button>
+                        <Button color="cyan lighten-2" onClick={() => this.setState({ modaledit: false })}>Batal</Button>
                     </ModalFooter>
                 </Modal>
 

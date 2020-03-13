@@ -35,7 +35,7 @@ export class Kelolagaleri extends Component {
                         Mulai Disini
                     </a>
                 <div>
-                    <img src={COPY} style={{width:'27cm', height:'15cm', marginTop:'2cm', marginRight:'-5.5cm'}} />
+                    <img src={COPY} style={{width:'27cm', height:'15cm', marginTop:'2cm', marginRight:'-5cm'}} />
                 </div>
                 <div id='uwiw' style={{marginTop:'170vh'}}>
                     uwiw

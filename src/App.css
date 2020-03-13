@@ -1114,3 +1114,43 @@ html {
   border-radius: 25px;
   margin-top: 2cm;
 }
+.galleryloop{
+  position: relative;
+  display: grid;
+  margin-top: 5cm;
+  margin-left: -25cm;
+  margin-right: 1cm;
+  grid-template-columns: repeat(3, 400px);
+  grid-template-rows: repeat(5, 200px);
+}
+
+.containergallery{
+  position: relative;
+}
+
+.gallery :hover {
+  background: rgba(0, 0, 0, .3);
+  transition: 0.5s ease;
+}
+
+.buttondelete{
+  position: absolute;
+  width: 150px;
+  left:0;
+  top: 65px;
+  left: 125px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .50s ease;
+}
+
+.buttondelete a{
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  z-index: 1;
+}
+
+.containergallery:hover .buttondelete{
+  opacity: 1;
+}
