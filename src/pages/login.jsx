@@ -11,7 +11,8 @@ import { UserLogin } from '../redux/action';
 class Login extends Component {
     state={
         error:'',
-        loading:false
+        loading:false,
+        rolename:''
     }
 
     btnLogin=()=>{
@@ -33,8 +34,10 @@ class Login extends Component {
     }
 
     render() {
-        if(this.props.login){
-            return <Redirect to='/beranda' />
+        if(this.props.rolename==='user'){
+            return <Redirect to='beranda' />
+        }else if(this.props.rolename==='admin') {
+            return <Redirect to='kursus' />
         }
         return (
             <div>
@@ -104,7 +107,8 @@ const mapStateToProps=state=>{
     return{
         error:state.Auth.error,
         username: state.Auth.username,
-        login: state.Auth.login
+        login: state.Auth.login,
+        rolename:state.Auth.rolename
     }
 }
 

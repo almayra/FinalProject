@@ -1,12 +1,6 @@
 import Axios from 'axios'
 import {APIURL} from './../../support/url'
 
-// export const LogoutSuccessAction=()=>{
-//     return{
-//         type:'LOGOUT_SUCCESS',
-//     }
-// }
-
 export const UserRegister=({username, email, password})=>{
     return (dispatch)=>{
         if(username==='' || password==='' || email===''){
@@ -39,7 +33,7 @@ export const UserLogin=({username, password})=>{
                     password
                 }
             }).then(res =>{
-                console.log(res.data)
+                console.log(res.data.result)
                 if(res.data.status !== 'error'){
                     dispatch({type:'LOGIN_SUCCESS', payload:res.data.result})
                     localStorage.setItem('username', res.data.result.username)

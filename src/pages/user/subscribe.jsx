@@ -9,20 +9,54 @@ import STANDAR from '../../support/img/standar.png'
 import withReactContent from 'sweetalert2-react-content'
 import PREMIUM from '../../support/img/premium.png'
 import { Button, Icon } from 'semantic-ui-react'
+import Axios from 'axios'
+import {APIURL, APIURLIMG} from '../../support/url'
+
 
 const MySwal=withReactContent(Swal)
 
 class Subscribe extends Component {
     state={
-        modalsubs:false
+        modalsubs:false,
+        databukti:[],
+        addimagefile:{}
+    }
+
+    onChangeImage=(event)=>{
+        var file=event.target.files[0]
+        if(file){
+            this.setState({addimagefile:event.target.files[0]})
+            console.log(event.target.files[0])
+        }else{
+            alert('Masukkan Foto')
+        }
     }
 
     onKirimDataClick=()=>{
-        Swal.fire(
-            'Berhasil!',
-            'Data kamu sudah terkirim, tunggu verifikasi yaa:)',
-            'success'
-        )
+        var formdata= new FormData()
+        var bukti = this.state.addimagefile
+        console.log('foto', this.state.addimagefile)
+        var databukti={
+            bukti
+        }
+
+        console.log(databukti)
+        formdata.append('image', bukti)
+        formdata.append('data', JSON.stringify(databukti))
+
+        if(bukti===''){
+            MySwal.fire('Gagal', 'Kamu belum mengirim bukti', 'error')
+        }else{
+            MySwal.fire('Berhasil!', 'Tunggu konfirmasi ya!', 'success')
+        }
+
+        Axios.post(`${APIURL}transaksi/postbukti`, formdata, Headers)
+        .then(res =>{
+            console.log(res.data)
+        }).catch(err =>{
+            console.log(err)
+        })
+        console.log(this.state)
     }
 
     render() {
@@ -54,8 +88,8 @@ class Subscribe extends Component {
                     </div>
                     </ModalBody>
                     <ModalFooter>
-                    <Button animated>
-                        <Button.Content visible onClick={this.onKirimDataClick}>Kirim</Button.Content>
+                    <Button animated onClick={this.onKirimDataClick} >
+                        <Button.Content visible>Kirim</Button.Content>
                         <Button.Content hidden>
                             <Icon name='arrow right' />
                         </Button.Content>

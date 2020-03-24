@@ -2,8 +2,37 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import {FaUserAlt} from 'react-icons/fa'
 import COPY from '../../support/img/copy2.jpg'
+import Axios from 'axios';
+import {APIURL, APIURLIMG} from '../../support/url'
 
 export class Kelolagaleri extends Component {
+    state={
+        dataGaleri:[]
+    }
+
+    componentDidMount(){
+        Axios.get(`${APIURL}galeri/getgaleri`)
+        .then(res1 =>{
+            this.setState({dataGaleri:res1.data})
+            console.log(this.state.dataGaleri)
+        }).catch(err =>{
+            console.log(err)
+        })
+    }
+
+    renderGallery=()=>{
+        var galeri=this.state.dataGaleri
+        if(galeri.length){
+            return galeri.map((val, index)=>{
+                return(
+                    <div>
+                        <img src={`${APIURLIMG+val.foto}`} style={{height:'12rem', borderRadius:'1rem'}} />
+                    </div>
+                )
+            })
+        }
+    }
+
     render() {
         return (
             <div className='login3'>
@@ -28,17 +57,17 @@ export class Kelolagaleri extends Component {
                         Dunia adalah lembar utuh,<br/>
                         dan pikiranmu tintanya.<br/><br/>
                         Buat iklan yang nyata,<br/>
-                        sebagai upah hadiahnya.
+                        dimana pikiran bercerita.
                     </div>
                 </div>
-                    <a className='disini' href='#uwiw' style={{textDecoration:'none', color:'#f8f9fb'}}>
+                    <a className='disini' href='#pkc' style={{textDecoration:'none', color:'#f8f9fb'}}>
                         Mulai Disini
                     </a>
                 <div>
                     <img src={COPY} style={{width:'27cm', height:'15cm', marginTop:'2cm', marginRight:'-5cm'}} />
                 </div>
-                <div id='uwiw' style={{marginTop:'170vh'}}>
-                    uwiw
+                <div id='pkc' className='galleryloop1' style={{marginTop:'100vh'}}>
+                    {this.renderGallery()}
                 </div>
             </div>
         )

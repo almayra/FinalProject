@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import CEWE from '../../support/img/kelas.png'
 import {FaUserAlt} from 'react-icons/fa'
-import IMG1 from '../../support/img/marketing.png'
-import IMG2 from '../../support/img/socialmed.png'
 import Axios from 'axios';
 import { APIURL, APIURLIMG } from '../../support/url';
 
@@ -59,7 +57,7 @@ export class Kelas extends Component {
                         </Link>
                         <Link a to='galeri' style={{color:'black'}}>
                             GALERI PKC
-                        </Link>                            
+                        </Link>                          
                         <FaUserAlt
                             size={30}
                             style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
@@ -85,7 +83,7 @@ export class Kelas extends Component {
                                 Semua Program
                             </div>
                             <div className='kategori mr-4'>
-                                Copywriting
+                                Branding
                             </div>
                             <div className='kategori'>
                                 Marketing

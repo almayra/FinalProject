@@ -114,6 +114,10 @@ export class Admin extends Component {
         console.log(this.state.dataedit)
     }
 
+    onProfilClick=()=>{
+        this.setState({modalprofil:true})
+    }
+
     onSaveEditClick=()=>{
         var idEdit=this.state.dataedit.id
         var formdata=new FormData()
@@ -181,9 +185,11 @@ export class Admin extends Component {
     render() {
         return (
             <div className='login1-admin'>
-               <Modal isOpen={this.state.modaledit} toggle={() => this.setState({ modaledit: false })} >
+               <Modal isOpen={this.state.modaledit} centered toggle={() => this.setState({ modaledit: false })} >
                     <ModalHeader>
-                        Edit Kelas
+                        <div style={{fontSize:'15px', fontWeight:'bolder'}}>
+                            Edit Kelas
+                        </div>
                     </ModalHeader>
                     <ModalBody>
                         <Form>
@@ -214,7 +220,7 @@ export class Admin extends Component {
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <CustomInput type="file" name="file" label='Pilih Cover Kelas' onChange={this.onChangeImgEdit} />
+                                <CustomInput type="file" name="file" label='Pilih Cover Kelas'  onChange={this.onChangeImgEdit} />
                             </FormGroup>
                             <FormGroup>
                                 <input class='form-control' 
@@ -240,8 +246,25 @@ export class Admin extends Component {
                     </ModalFooter>
                 </Modal>
 
+                <Modal isOpen={this.state.modalprofil} toggle={() => this.setState({ modalprofil: false })} >
+                    <ModalHeader>
+                        Profil
+                    </ModalHeader>
+                    <ModalBody>
+                        <Form>
+                            <FormGroup>
+                                <input class='form-control' 
+                                type="text" 
+                                ref="editmateri" 
+                                placeholder='Materi Kelas' 
+                                />
+                            </FormGroup>
+                        </Form>
+                    </ModalBody>
+                </Modal>
+
                 <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
-                        <Link a to='/kursus' style={{color:'black'}}>
+                        <Link to='/kursus' style={{color:'black'}}>
                             KURSUS
                         </Link>
                         <Link a to='/performa' style={{color:'black'}}>
@@ -256,6 +279,7 @@ export class Admin extends Component {
                         <div>
                             <FaUserAlt
                             size={30}
+                            onClick={()=>this.onProfilClick()}
                             style={{marginTop:'-1.5cm',marginLeft:'38cm',color:'#4b4b4b'}}
                             />
                         </div>

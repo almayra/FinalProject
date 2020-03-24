@@ -5,7 +5,7 @@ import KELAS from '../../support/img/kosong.png'
 import {connect} from 'react-redux'
 
 export class Home extends Component {
-     usernameCap=(username)=>{
+    usernameCap=(username)=>{
         var nama=username.split('')
         nama[0]=nama[0].toUpperCase()
         return nama.join('')

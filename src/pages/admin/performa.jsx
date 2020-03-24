@@ -49,7 +49,9 @@ export class Performa extends Component {
                         <Link a to='/transaksi' style={{color:'black'}}>
                             TRANSAKSI
                         </Link>
-                        <a>KELOLA GALERI</a>
+                        <Link a to='/admingaleri' style={{color:'black'}}>
+                            KELOLA GALERI
+                        </Link> 
                         <div>
                             <FaUserAlt
                             size={30}

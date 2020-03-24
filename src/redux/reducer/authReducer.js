@@ -5,7 +5,7 @@ const INITIAL_STATE={
     error:'',
     loading:false,
     register:false,
-    role:''
+    rolename:''
 }
 
 export default (state=INITIAL_STATE, action)=>{
@@ -13,7 +13,7 @@ export default (state=INITIAL_STATE, action)=>{
         case 'SUCCESS_REGISTER':
             return {...state, ...action.payload, register:true, error:''}
         case 'ERROR_REGISTER':
-            return {...state,error:action.payload}
+            return {...state, error:action.payload}
         case 'REGIS_LOADING':
             return {...state,loading:true,error:''}
         case 'LOGIN_SUCCESS':

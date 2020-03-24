@@ -1124,6 +1124,16 @@ html {
   grid-template-rows: repeat(5, 200px);
 }
 
+.galleryloop1{
+  position: relative;
+  display: grid;
+  margin-top: 5cm;
+  margin-left: -32cm;
+  margin-right: 1cm;
+  grid-template-columns: repeat(3, 400px);
+  grid-template-rows: repeat(5, 200px);
+}
+
 .containergallery{
   position: relative;
 }

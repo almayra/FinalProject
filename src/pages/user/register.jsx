@@ -8,6 +8,10 @@ import {UserRegister} from '../../redux/action'
 import {connect} from 'react-redux'
 import {AiOutlineExclamationCircle} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal=withReactContent(Swal)
 
 export class Register extends Component {
     state={
@@ -25,6 +29,27 @@ export class Register extends Component {
             email,
             password
         })
+
+        if(username===''||email===''||password===''){
+            return <this.renderError/>
+        }else{
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              
+              Toast.fire({
+                icon: 'success',
+                title: 'Verifikasikan email kamu!'
+              })
+        }
         
     }
 

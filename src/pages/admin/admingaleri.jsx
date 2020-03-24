@@ -128,9 +128,11 @@ export class AdminGaleri extends Component {
     render() {
         return (
             <div className='login3'>
-                <Modal isOpen={this.state.modaladdfoto} toggle={() => this.setState({ modaladdfoto: false })} >
+                <Modal isOpen={this.state.modaladdfoto} centered toggle={() => this.setState({ modaladdfoto: false })} >
                     <ModalHeader>
-                        Tambah Foto
+                        <div style={{fontSize:'15px', fontWeight:'bolder'}}>
+                            Tambah Foto
+                        </div>
                     </ModalHeader>
                     <ModalBody>
                         <Form>

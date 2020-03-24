@@ -31,7 +31,6 @@ export class Kelasdetail extends Component {
     render() {
         const { activeItem } = this.state
         if(this.state.detailkelas){
-
             return (
                 <div className='login1-admin'>
                 <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
