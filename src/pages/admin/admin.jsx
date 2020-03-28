@@ -18,7 +18,9 @@ export class Admin extends Component {
         editImageFile:null,
         cardKelas:[],
         dataedit: [],
-        kategori:[]
+        kategori:[],
+        page:1,
+        pager:{}
     }
 
     componentDidMount(){
@@ -38,7 +40,26 @@ export class Admin extends Component {
         }).catch(err =>{
             console.log(err)
         })
+        // Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
+        // .then(res1 =>{
+        //     console.log('get kelas', res1.data)
+        //     this.setState({cardKelas: res1.data.pageOfData, pager:res1.data.pager})
+        // }).catch( err=>{
+        //     console.log(err)
+        // })
     }
+
+    // componentDidUpdate(_, prevState){
+    //     if(prevState.page !== this.state.page){
+    //         Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
+    //         .then((res1)=>{
+    //             console.log('get kelas', res1.data)
+    //             this.setState({cardKelas: res1.data.pageOfData, pager:res1.data.pager})
+    //         }).catch((err)=>{
+    //             console.log(err)
+    //         })
+    //     }
+    // }
 
     renderCard=()=>{
         var card=this.state.cardKelas
@@ -183,6 +204,7 @@ export class Admin extends Component {
     }
 
     render() {
+        var {pager}=this.state
         return (
             <div className='login1-admin'>
                <Modal isOpen={this.state.modaledit} centered toggle={() => this.setState({ modaledit: false })} >
@@ -296,6 +318,10 @@ export class Admin extends Component {
                     <div className='kelasloop'>
                         {this.renderCard()}
                     </div>
+                </div>
+                <div style={{marginLeft:'35%', width:'350px'}}>
+                    
+
                 </div>
             </div>
         )

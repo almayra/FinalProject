@@ -1164,3 +1164,16 @@ html {
 .containergallery:hover .buttondelete{
   opacity: 1;
 }
+
+.gambar{
+  border-radius: 2rem;
+  border-bottom-left-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  overflow: hidden;
+  transition: 700ms ease-in-out;
+}
+
+.gambar :hover{
+  transform: scale(1.1);
+  transition: 700ms ease;
+}

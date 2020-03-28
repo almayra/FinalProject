@@ -27,6 +27,7 @@ export class Performa extends Component {
             return table.map((val, index)=>{
                 return(
                         <tr>
+                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {index + 1}. </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.username} </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.email} </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.status} </td>
@@ -35,6 +36,7 @@ export class Performa extends Component {
             })
         }
     }
+    
 
     render() {
         return (
@@ -63,14 +65,24 @@ export class Performa extends Component {
                     <table class="ui striped table" style={{marginLeft:'-20.5cm', width:'30cm'}}>
                         <thead>
                             <tr>
-                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
-                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
-                            <th style={{ fontWeight:'bold', fontSize:'15px'}}>Status</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>No.</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             {this.renderTable()}
                         </tbody>
+                        <tfoot class="full-width">
+                            <tr>
+                            <th colspan="6">
+                                <div class="ui right floated small teal labeled icon button">
+                                    <i class="user icon"></i> 10
+                                </div>
+                            </th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

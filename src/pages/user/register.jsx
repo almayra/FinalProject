@@ -27,7 +27,7 @@ export class Register extends Component {
         this.props.UserRegister({
             username,
             email,
-            password
+            password,
         })
 
         if(username===''||email===''||password===''){

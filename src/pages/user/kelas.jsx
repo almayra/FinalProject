@@ -28,7 +28,9 @@ export class Kelas extends Component {
                         <Link to={'/kelasdetail/' +val.id} style={{marginLeft:'-20cm',marginTop:'40px'}}>
                             <div className='d-flex'>
                                 <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'22rem'}}>
-                                <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
+                                <div className='gambar'>
+                                    <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
+                                </div>
                                     <div class="card-body">
                                     <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
                                     <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>

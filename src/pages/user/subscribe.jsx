@@ -17,27 +17,31 @@ const MySwal=withReactContent(Swal)
 
 class Subscribe extends Component {
     state={
-        modalsubs:false,
+        modalstandar:false,
+        modalpremium:false,
         databukti:[],
-        addimagefile:{}
+        addimagefile:{},
+        idpaket:0
     }
 
     onChangeImage=(event)=>{
-        var file=event.target.files[0]
-        if(file){
             this.setState({addimagefile:event.target.files[0]})
             console.log(event.target.files[0])
-        }else{
-            alert('Masukkan Foto')
-        }
     }
 
     onKirimDataClick=()=>{
         var formdata= new FormData()
         var bukti = this.state.addimagefile
+        var tglmulai = new Date()
+        var idpaket = this.state.idpaket
+        var iduser= localStorage.getItem('id')
         console.log('foto', this.state.addimagefile)
         var databukti={
-            bukti
+            bukti,
+            tglmulai,
+            idpaket,
+            status:'waiting confirmation',
+            iduser
         }
 
         console.log(databukti)
@@ -62,7 +66,7 @@ class Subscribe extends Component {
     render() {
         return (
             <div className='subscribe'>
-                <Modal isOpen={this.state.modalsubs} toggle={()=>this.setState({modalsubs:false})}>
+                <Modal isOpen={this.state.modalstandar} toggle={()=>this.setState({modalstandar:false})}>
                     <ModalHeader>
                         <div style={{fontSize:'25px', fontWeight:'bold', alignItems:'center'}}> Pembayaran </div>
                     </ModalHeader>
@@ -81,10 +85,53 @@ class Subscribe extends Component {
                             <th>Penerima</th>
                             <td style={{textAlign:'center', alignItems:'center'}}>Almayra</td>
                         </tr>
+                        <tr>
+                            <th>Paket</th>
+                            <td style={{textAlign:'center', alignItems:'center'}} value={2} >Standar</td>
+                        </tr>
                     </thead>                     
                     </table>
                     <div className='mt-5'>
-                        <CustomInput type='file' label='Pilih Bukti Pembayaran' />
+                        <CustomInput type='file' label='Pilih Bukti Pembayaran' onChange={this.onChangeImage} />
+                    </div>
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button animated onClick={this.onKirimDataClick} >
+                        <Button.Content visible>Kirim</Button.Content>
+                        <Button.Content hidden>
+                            <Icon name='arrow right' />
+                        </Button.Content>
+                        </Button>                    
+                    </ModalFooter>
+                </Modal>
+
+                <Modal isOpen={this.state.modalpremium} toggle={()=>this.setState({modalpremium:false})}>
+                    <ModalHeader>
+                        <div style={{fontSize:'25px', fontWeight:'bold', alignItems:'center'}}> Pembayaran </div>
+                    </ModalHeader>
+                    <ModalBody>
+                    <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th>Bank</th>
+                            <td style={{textAlign:'center', alignItems:'center'}}>BCA</td>
+                        </tr>
+                        <tr>
+                            <th>No Rekening</th>
+                            <td style={{textAlign:'center', alignItems:'center'}}>7330464989</td>
+                        </tr>
+                        <tr>
+                            <th>Penerima</th>
+                            <td style={{textAlign:'center', alignItems:'center'}}>Almayra</td>
+                        </tr>
+                        <tr>
+                            <th>Paket</th>
+                            <td style={{textAlign:'center', alignItems:'center'}} value={3} >Premium</td>
+                        </tr>
+                    </thead>                     
+                    </table>
+                    <div className='mt-5'>
+                        <CustomInput type='file' label='Pilih Bukti Pembayaran' onChange={this.onChangeImage}/>
                     </div>
                     </ModalBody>
                     <ModalFooter>
@@ -151,7 +198,7 @@ class Subscribe extends Component {
                         </ul>
                     </div>
                     <div class="card-body">
-                    <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold',marginTop:'1cm'}} onClick={()=>this.setState({modalsubs:true})} >
+                    <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold',marginTop:'1cm'}} onClick={()=>this.setState({modalstandar:true, idpaket:2})} >
                         IDR 75
                         <div style={{fontSize:'12px',fontWeight:'lighter',textTransform:'lowercase'}}>per bulan</div> 
                         </button>
@@ -184,7 +231,7 @@ class Subscribe extends Component {
                         </ul>
                     </div>
                     <div class="card-body">
-                        <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold'}} onClick={()=>this.setState({modalsubs:true})}>
+                        <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold'}} onClick={()=>this.setState({modalpremium:true, idpaket:3})}>
                         IDR 700
                         <div style={{fontSize:'12px',fontWeight:'lighter',textTransform:'lowercase'}}>per tahun</div> 
                         </button>
