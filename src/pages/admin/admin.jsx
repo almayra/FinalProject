@@ -20,7 +20,8 @@ export class Admin extends Component {
         dataedit: [],
         kategori:[],
         page:1,
-        pager:{}
+        pager:{},
+        search:''
     }
 
     componentDidMount(){
@@ -40,26 +41,26 @@ export class Admin extends Component {
         }).catch(err =>{
             console.log(err)
         })
-        // Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
-        // .then(res1 =>{
-        //     console.log('get kelas', res1.data)
-        //     this.setState({cardKelas: res1.data.pageOfData, pager:res1.data.pager})
-        // }).catch( err=>{
-        //     console.log(err)
-        // })
+        Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
+        .then(res1 =>{
+            console.log('get kelas', res1.data)
+            this.setState({cardKelas: res1.data.pageOfData, pager:res1.data.pager})
+        }).catch( err=>{
+            console.log(err)
+        })
     }
 
-    // componentDidUpdate(_, prevState){
-    //     if(prevState.page !== this.state.page){
-    //         Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
-    //         .then((res1)=>{
-    //             console.log('get kelas', res1.data)
-    //             this.setState({cardKelas: res1.data.pageOfData, pager:res1.data.pager})
-    //         }).catch((err)=>{
-    //             console.log(err)
-    //         })
-    //     }
-    // }
+    componentDidUpdate(_, prevState){
+        if(prevState.page !== this.state.page){
+            Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
+            .then((res1)=>{
+                console.log('get kelas', res1.data)
+                this.setState({cardKelas: res1.data.pageOfData, pager:res1.data.pager})
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+    }
 
     renderCard=()=>{
         var card=this.state.cardKelas
@@ -74,7 +75,7 @@ export class Admin extends Component {
                                     <p className="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
                                     <p className="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>
                                         <div className='d-flex'>
-                                            <div className='outerijo' onClick={()=>this.onEditClick(index)} > <MdEdit color='#58b800' size={32} /> </div>
+                                            <div className='outerijo' onClick={()=>this.onEditClick(index)}> <MdEdit color='#58b800' size={32} /> </div>
                                             <div className='outermerah' onClick={()=>this.onDeleteClick(index)}> <IoMdTrash color='grey' size={32} /> </div>
                                         </div>
                                     </div>
@@ -318,10 +319,29 @@ export class Admin extends Component {
                     <div className='kelasloop'>
                         {this.renderCard()}
                     </div>
+                <div style={{ maxWidth:'fit-content', marginLeft:'-30rem', marginBottom:'3rem'}}>
+                {pager.pages && pager.pages.length &&
+                        <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black' }}>
+                            <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}  >First</Link>
+                            </li>
+                            <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}>Previous</Link>
+                            </li>
+                            {pager.pages.map(page =>
+                                <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
+                                    <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
+                                </li>
+                            )}
+                            <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}>Next</Link>
+                            </li>
+                            <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}>Last</Link>
+                            </li>
+                        </ul>
+                    }
                 </div>
-                <div style={{marginLeft:'35%', width:'350px'}}>
-                    
-
                 </div>
             </div>
         )

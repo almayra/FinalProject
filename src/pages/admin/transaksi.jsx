@@ -4,30 +4,48 @@ import {FaUserAlt} from 'react-icons/fa'
 import Axios from 'axios'
 import {APIURL, APIURLIMG} from '../../support/url'
 import {IoMdTrash} from 'react-icons/io'
+import moment from 'moment'
 
 export class Transaksi extends Component {
     state={
         datauser:[],
-        dataaprove:[]
+        dataaprove:[],
+        page:1,
+        pager:{},
+        search:''
     }
 
     componentDidMount(){
-        Axios.get(`${APIURL}transaksi/gettransaksi`)
+        Axios.get(`${APIURL}transaksi/gettransaksi/${this.state.page}`)
         .then(res =>{
             console.log(res.data)
-            this.setState({datauser:res.data})
+            this.setState({datauser:res.data.pageOfData, pager:res.data.pager})
         }).catch(err =>{
             console.log(err)
         })
     }
 
-    // approveTransaksi=(id, iduser, status)=>{
-    //     console.log(id, iduser, status)
-    //     Axios.put(`${APIURL}transaksi/apprivepay/${id}`, {iduser, status})
-    //     .then(res =>{
-    //         this.setState({})
-    //     })
-    // }
+    componentDidUpdate(_, prevState){
+        if(prevState.page !== this.state.page){
+            Axios.get(`${APIURL}transaksi/gettransaksi/${this.state.page}`)
+            .then(res =>{
+                console.log(res.data)
+                this.setState({datauser:res.data.pageOfData, pager:res.data.pager})
+            }).catch(err =>{
+                console.log(err)
+            })
+        }
+    }
+
+    approveTransaksi=(idtransaksi, iduser, status)=>{
+        console.log(idtransaksi, iduser, status)
+        Axios.put(`${APIURL}transaksi/approvepay/${idtransaksi}`, {iduser, status})
+        .then(res =>{
+            this.setState({datauser:res.data.pageOfData, pager: res.data.pager})
+        }).catch(err =>{
+            console.log(err)
+        })
+    }
 
     renderUser=()=>{
         var user = this.state.datauser
@@ -36,11 +54,14 @@ export class Transaksi extends Component {
                 return(
                     <tr>
                         <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.username} </td>
-                        <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.tglmulai} </td>
-                        <td style={{ fontWeight:'regular', fontSize:'13px'}}>Desember 24, 2014</td>
+                        <td style={{ fontWeight:'regular', fontSize:'13px'}}> {moment(val.tglmulai).format('LL')} </td>
+                        <td style={{ fontWeight:'regular', fontSize:'13px'}}> {moment(val.tglmulai).add(1, 'M').format('LL')} </td>
                         <td style={{ fontWeight:'regular', fontSize:'13px'}} > {val.namapaket} </td>
                         <td> <img src={`${APIURLIMG+val.bukti}`} height='100px' /> </td>
-                        <td> <button class="ui small teal button mr-4 ml-2">Konfirmasi</button> <IoMdTrash size={28} color='#292929' style={{marginRight:'-25px'}} /> </td>
+                        <td> 
+                            <button class="ui small teal button mr-4 ml-2" onClick={()=>this.approveTransaksi(val.idtransaksi, val.iduser, true)}>Konfirmasi</button> 
+                            <IoMdTrash size={28} color='#292929' style={{marginRight:'-25px'}} onClick={()=>this.approveTransaksi(val.idtransaksi, val.iduser, false)} />
+                        </td>
                     </tr>
 
                 )
@@ -50,6 +71,7 @@ export class Transaksi extends Component {
 
 
     render() {
+        var {pager} = this.state
         return (
             <div className='login1'>
                 <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
@@ -90,12 +112,35 @@ export class Transaksi extends Component {
                         <tfoot class="full-width">
                             <tr>
                             <th colspan="6">
+                            <div>
+                                {pager.pages && pager.pages.length &&
+                                    <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', justifyContent:'center' }}>
+                                        <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                            <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}  >First</Link>
+                                        </li>
+                                        <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}>Previous</Link>
+                                        </li>
+                                        {pager.pages.map(page =>
+                                            <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
+                                                <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
+                                            </li>
+                                        )}
+                                        <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}>Next</Link>
+                                        </li>
+                                        <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                            <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}>Last</Link>
+                                        </li>
+                                    </ul>
+                                }
+                                </div>
                                 {/* <div class="ui small primary button" style={{ fontWeight:'bolder', fontSize:'13px'}}>
                                 Konfirmasi
                                 </div> */}
-                                <div class="ui small  disabled button" style={{ fontWeight:'bolder', fontSize:'13px'}}>
+                                {/* <div class="ui small  disabled button" style={{ fontWeight:'bolder', fontSize:'13px'}}>
                                 Konfirmasi Semua
-                                </div>
+                                </div> */}
                             </th>
                             </tr>
                         </tfoot>

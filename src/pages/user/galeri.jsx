@@ -4,10 +4,19 @@ import {FaUserAlt} from 'react-icons/fa'
 import COPY from '../../support/img/copy2.jpg'
 import Axios from 'axios';
 import {APIURL, APIURLIMG} from '../../support/url'
+import {logOut} from '../../redux/action'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 
-export class Kelolagaleri extends Component {
+
+const logOutUser=()=>{
+    localStorage.clear()
+    logOut()
+}
+
+class Kelolagaleri extends Component {
     state={
-        dataGaleri:[]
+        dataGaleri:[],
+        modalprofil:false
     }
 
     componentDidMount(){
@@ -33,10 +42,29 @@ export class Kelolagaleri extends Component {
         }
     }
 
+    onModalOpen=()=>{
+        this.setState({modalprofil:true})
+    }
+
     render() {
         return (
             <div className='login3'>
-                <div class="container blue12 topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
+                <Modal isOpen={this.state.modalprofil} centered toggle={() => this.setState({ modalprofil: false })}>
+                    <ModalHeader>
+                        <div style={{fontSize:'15px', fontWeight:'bold'}}>
+                            Profil
+                        </div>                    
+                    </ModalHeader>
+                    <ModalBody>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style={{cursor:'pointer'}}>Ganti Password  </li>
+                            <li class="list-group-item" style={{cursor:'pointer'}}>Keluar </li>
+                        </ul>
+                    </ModalBody>
+                </Modal>
+
+               <div>
+                    <div class="container blue12 topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
                         <Link a to='beranda' style={{color:'black'}}>
                             BERANDA
                         </Link>
@@ -45,13 +73,17 @@ export class Kelolagaleri extends Component {
                         </Link>
                         <Link a to='galeri' style={{color:'black'}}>
                             GALERI PKC
-                        </Link>                            
+                        </Link>     
+                    </div>
+                    <div>
                         <FaUserAlt
-                            size={30}
-                            style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
+                        onClick={()=>this.onModalOpen()}
+                        size={30}
+                        style={{marginTop:'-8.9cm',marginLeft:'88rem',color:'#4b4b4b', cursor:'pointer'}}
                         />
-                </div>  
-                <div style={{marginLeft:'-20cm'}}>
+                    </div>
+                </div>
+                <div style={{marginLeft:'-26cm'}}>
                     <div className='galeritext'>GALERI PKC</div>
                     <div className="textkecil">
                         Dunia adalah lembar utuh,<br/>
@@ -64,7 +96,7 @@ export class Kelolagaleri extends Component {
                         Mulai Disini
                     </a>
                 <div>
-                    <img src={COPY} style={{width:'27cm', height:'15cm', marginTop:'2cm', marginRight:'-5cm'}} />
+                    <img src={COPY} style={{width:'27cm', height:'15cm', marginTop:'2cm', marginRight:'-7cm'}} />
                 </div>
                 <div id='pkc' className='galleryloop1' style={{marginTop:'100vh'}}>
                     {this.renderGallery()}

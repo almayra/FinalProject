@@ -32,7 +32,7 @@ export class Kelasdetail extends Component {
         const { activeItem } = this.state
         if(this.state.detailkelas){
             return (
-                <div className='login1-admin'>
+                <div className='login4'>
                 <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
                         <Link to='beranda' style={{color:'black'}}>
                             BERANDA

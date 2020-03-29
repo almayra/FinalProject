@@ -20,6 +20,8 @@ export default (state=INITIAL_STATE, action)=>{
             return {...state,...action.payload, login:true}
         case 'LOGIN_ERROR':
             return {...state, error:action.payload}
+        case 'USER_LOGOUT':
+            return {...INITIAL_STATE}
         default:
             return state
     }

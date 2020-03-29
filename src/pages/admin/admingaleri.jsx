@@ -7,6 +7,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, FormText, 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {IoMdTrash} from 'react-icons/io'
+import {MdAddAPhoto} from 'react-icons/md'
 
 
 const MySwal=withReactContent(Swal)
@@ -14,6 +15,7 @@ const MySwal=withReactContent(Swal)
 export class AdminGaleri extends Component {
     state={
         modaladdfoto:false,
+        modalprofil:false,
         addimagefile:{},
         dataGaleri:[]
     }
@@ -69,6 +71,10 @@ export class AdminGaleri extends Component {
 
     onModalOpen=()=>{
         this.setState({modaladdfoto:true})
+    }
+
+    onProfilOpen=()=>{
+        this.setState({modalprofil:true})
     }
 
     onDeleteClick=(index)=>{
@@ -128,6 +134,20 @@ export class AdminGaleri extends Component {
     render() {
         return (
             <div className='login3'>
+                <Modal isOpen={this.state.modalprofil} centered toggle={() => this.setState({ modalprofil: false })}>
+                    <ModalHeader>
+                        <div style={{fontSize:'15px', fontWeight:'bold'}}>
+                            Profil
+                        </div>                    
+                    </ModalHeader>
+                    <ModalBody>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style={{cursor:'pointer'}}>Ganti Password  </li>
+                            <li class="list-group-item" style={{cursor:'pointer'}}>Keluar </li>
+                        </ul>
+                    </ModalBody>
+                </Modal>
+
                 <Modal isOpen={this.state.modaladdfoto} centered toggle={() => this.setState({ modaladdfoto: false })} >
                     <ModalHeader>
                         <div style={{fontSize:'15px', fontWeight:'bolder'}}>
@@ -144,26 +164,29 @@ export class AdminGaleri extends Component {
                         <Button color="cyan lighten-2" onClick={() => this.setState({ modaladdfoto: false })}>Batal</Button>
                     </ModalFooter>
                 </Modal>
-                <div class="container blue12 topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
-                        <Link a to='/kursus' style={{color:'black'}}>
-                            KURSUS
-                        </Link>
-                        <Link a to='/performa' style={{color:'black'}}>
-                            PERFORMA
-                        </Link>
-                        <Link a to='/transaksi' style={{color:'black'}}>
-                            TRANSAKSI
-                        </Link>                        
-                        <a>KELOLA GALERI</a>
-                        <div>
-                            <FaUserAlt
-                            size={30}
-                            style={{marginTop:'-1.5cm',marginLeft:'38cm',color:'#4b4b4b'}}
-                            />
-                        </div>
+                <div>
+                    <div class="container blue12 topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
+                            <Link a to='/kursus' style={{color:'black'}}>
+                                KURSUS
+                            </Link>
+                            <Link a to='/performa' style={{color:'black'}}>
+                                PERFORMA
+                            </Link>
+                            <Link a to='/transaksi' style={{color:'black'}}>
+                                TRANSAKSI
+                            </Link>                        
+                            <a>KELOLA GALERI</a>
+                    </div>
+                            <div>
+                                <FaUserAlt
+                                onClick={()=>this.onProfilOpen()}
+                                size={30}
+                                style={{marginTop:'-8.9cm',marginLeft:'87.5rem',color:'#4b4b4b',cursor:'pointer'}}
+                                />
+                            </div>
                 </div>
-                <div style={{marginTop:'8rem', color:'#8474A1'}} className='tambahfoto' onClick={()=>this.onModalOpen()} >
-                    Tambah Foto
+                <div style={{marginTop:'8rem', color:'#8474A1', marginLeft:'-5rem'}} className='tambahfoto1' onClick={()=>this.onModalOpen()} >
+                    <MdAddAPhoto size={32} />
                 </div>
                 <div className='galleryloop'>
                    {this.renderGallery()}
