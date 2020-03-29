@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {IoMdTrash} from 'react-icons/io'
 import {MdAddAPhoto} from 'react-icons/md'
+import {logOut} from '../../redux/action'
 
 
 const MySwal=withReactContent(Swal)
@@ -131,6 +132,11 @@ export class AdminGaleri extends Component {
         }
     }
 
+    logOutUser=()=>{
+        localStorage.clear()
+        logOut()
+    }
+
     render() {
         return (
             <div className='login3'>
@@ -142,8 +148,8 @@ export class AdminGaleri extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style={{cursor:'pointer'}}>Ganti Password  </li>
-                            <li class="list-group-item" style={{cursor:'pointer'}}>Keluar </li>
+                            <li class="list-group-item" style={{cursor:'pointer', color:'black'}}>Ganti Password  </li>
+                            <Link to ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </Link>
                         </ul>
                     </ModalBody>
                 </Modal>

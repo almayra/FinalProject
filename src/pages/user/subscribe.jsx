@@ -191,10 +191,10 @@ class Subscribe extends Component {
                                 <IoMdCheckmarkCircleOutline size={20} color='#77dd88' className='mr-3'/>
                                 Sertifikat kelulusan
                             </li>
-                            <li class="list-group-item">
+                            {/* <li class="list-group-item">
                                 <IoMdCheckmarkCircleOutline size={20} color='#77dd88' className='mr-3'/>
                                 Join komunitas
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                     <div class="card-body">
@@ -214,7 +214,7 @@ class Subscribe extends Component {
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <IoMdCheckmarkCircleOutline size={20} color='#77dd88' className='mr-3'/>
-                                Akses tanpa batas
+                                Akses semua kelas
                             </li>
                             <li class="list-group-item">
                                 <IoMdCheckmarkCircleOutline size={20} color='#77dd88' className='mr-3'/>
@@ -224,16 +224,16 @@ class Subscribe extends Component {
                                 <IoMdCheckmarkCircleOutline size={20} color='#77dd88' className='mr-3'/>
                                 Join komunitas
                             </li>
-                            <li class="list-group-item">
+                            {/* <li class="list-group-item">
                                 <IoMdCheckmarkCircleOutline size={20} color='#77dd88' className='mr-3'/>
                                 Hemat 20%
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                     <div class="card-body">
                         <button className='btn btn-success' style={{borderRadius:'15px',fontSize:'20px',fontWeight:'bold'}} onClick={()=>this.setState({modalpremium:true, idpaket:3})}>
-                        IDR 700
-                        <div style={{fontSize:'12px',fontWeight:'lighter',textTransform:'lowercase'}}>per tahun</div> 
+                        IDR 100
+                        <div style={{fontSize:'12px',fontWeight:'lighter',textTransform:'lowercase'}}>per bulan</div> 
                         </button>
                     </div>
                     </div>

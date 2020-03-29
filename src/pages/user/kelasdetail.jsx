@@ -34,13 +34,13 @@ export class Kelasdetail extends Component {
             return (
                 <div className='login4'>
                 <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
-                        <Link to='beranda' style={{color:'black'}}>
+                        <Link to='/beranda' style={{color:'black'}}>
                             BERANDA
                         </Link>
                         <Link a to='/kelas' style={{color:'black'}}>
                             KELAS
                         </Link>
-                        <Link a to='galeri' style={{color:'black'}}>
+                        <Link a to='/galeri' style={{color:'black'}}>
                             GALERI PKC
                         </Link>
                             <FaUserAlt
@@ -51,7 +51,7 @@ export class Kelasdetail extends Component {
                 <div className='login1-detailkelas'>
                     <div className='detailtext'>
                         <div className='d-flex' style={{width:'400px'}} >
-                            <Link to='/kelas'>
+                            <Link to='/beranda'>
                                 <IoIosArrowBack size={32} className='mr-2'color='black' />
                             </Link>
                             <div className='mt-1' style={{fontFamily:'Roboto', fontWeight:'bold', color:'black', textAlign:'left', fontSize:'30px'}}> {this.state.detailkelas.bab} </div>

@@ -7,12 +7,6 @@ import {APIURL, APIURLIMG} from '../../support/url'
 import {logOut} from '../../redux/action'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 
-
-const logOutUser=()=>{
-    localStorage.clear()
-    logOut()
-}
-
 class Kelolagaleri extends Component {
     state={
         dataGaleri:[],
@@ -27,6 +21,11 @@ class Kelolagaleri extends Component {
         }).catch(err =>{
             console.log(err)
         })
+    }
+
+    logOutUser=()=>{
+        localStorage.clear()
+        logOut()
     }
 
     renderGallery=()=>{
@@ -57,8 +56,8 @@ class Kelolagaleri extends Component {
                     </ModalHeader>
                     <ModalBody>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" style={{cursor:'pointer'}}>Ganti Password  </li>
-                            <li class="list-group-item" style={{cursor:'pointer'}}>Keluar </li>
+                            <li class="list-group-item" style={{ color:'black'}} >Ganti Password  </li>
+                            <Link to ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </Link>
                         </ul>
                     </ModalBody>
                 </Modal>

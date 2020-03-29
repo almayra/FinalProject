@@ -41,6 +41,7 @@ export class Transaksi extends Component {
         console.log(idtransaksi, iduser, status)
         Axios.put(`${APIURL}transaksi/approvepay/${idtransaksi}`, {iduser, status})
         .then(res =>{
+            console.log(res.data, 'line 44')
             this.setState({datauser:res.data.pageOfData, pager: res.data.pager})
         }).catch(err =>{
             console.log(err)
@@ -66,6 +67,8 @@ export class Transaksi extends Component {
 
                 )
             })
+        }else{
+            return <h1>No Transaction</h1>
         }
     }
 

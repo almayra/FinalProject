@@ -5,7 +5,8 @@ const INITIAL_STATE={
     error:'',
     loading:false,
     register:false,
-    rolename:''
+    rolename:'',
+    idpaketbljr:1
 }
 
 export default (state=INITIAL_STATE, action)=>{

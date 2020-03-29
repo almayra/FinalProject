@@ -45,6 +45,7 @@ export class Performa extends Component {
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {index + 1}. </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.username} </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.email} </td>
+                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.namapaket} </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.status} </td>
                         </tr>
                 )
@@ -84,6 +85,7 @@ export class Performa extends Component {
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>No.</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Paket Berlangganan</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Status</th>
                             </tr>
                         </thead>

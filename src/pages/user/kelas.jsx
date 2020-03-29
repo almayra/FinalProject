@@ -3,14 +3,21 @@ import { Link, Redirect } from 'react-router-dom';
 import CEWE from '../../support/img/kelas.png'
 import {FaUserAlt} from 'react-icons/fa'
 import Axios from 'axios';
+import {connect} from 'react-redux'
 import { APIURL, APIURLIMG } from '../../support/url';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal=withReactContent(Swal)
 
 export class Kelas extends Component {
     state={
         cardKelas:[],
         page:1,
         pager:{},
-        search:''
+        search:'',
+        notloginyet:false,
+        kelasdetail:false        
     }
 
     componentDidMount(){
@@ -42,6 +49,45 @@ export class Kelas extends Component {
         }
     }
 
+    onSubscribeClick=()=>{
+        return(
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Kamu belum ada paket kelas! :)',
+                footer: '<a href="/paketbelajar">Berlangganan Sekarang</a>'
+              })
+        )
+    }
+
+    renderCard1=()=>{
+        var card=this.state.cardKelas
+        if(card.length){
+            return card.map((val, index)=>{
+                return(
+                    <div onClick={this.onSubscribeClick} style={{marginLeft:'-20cm',marginTop:'40px'}}>
+                        <div className='d-flex'>
+                            <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'22rem'}}>
+                            <div className='gambar'>
+                                <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
+                            </div>
+                                <div class="card-body">
+                                <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
+                                <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+        }else{
+            return(
+                <div> loading </div>
+            )
+        }
+    }
+         
+
     getBranding(){
         Axios.get(`${APIURL}kelas/getbranding`)
         .then(res1 =>{
@@ -67,19 +113,19 @@ export class Kelas extends Component {
         if(card.length){
             return card.map((val, index)=>{
                 return(
-                        <Link to={'/kelasdetail/' +val.id} style={{marginLeft:'-20cm',marginTop:'40px'}}>
-                            <div className='d-flex'>
-                                <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'22rem'}}>
-                                <div className='gambar'>
-                                    <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
-                                </div>
-                                    <div class="card-body">
-                                    <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
-                                    <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>
-                                    </div>
+                    <Link to={'/kelasdetail/' +val.id} style={{marginLeft:'-20cm',marginTop:'40px'}}>
+                        <div className='d-flex'>
+                            <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'22rem'}}>
+                            <div className='gambar'>
+                                <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
+                            </div>
+                                <div class="card-body">
+                                <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
+                                <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
+                    </Link>
                 )
             })
         }else{
@@ -138,7 +184,7 @@ export class Kelas extends Component {
                 </div>
                 <div>
                     <div className='d-flex' style={{marginTop:'10.5cm'}} className='kelasloop'>
-                        {this.renderCard()}
+                        {this.props.idpaketbljr===1? this.renderCard1() : this.renderCard()}
                     </div>
 
                 <div style={{ maxWidth:'fit-content', marginLeft:'-53rem',marginTop:'2rem', marginBottom:'3rem'}}>
@@ -170,4 +216,11 @@ export class Kelas extends Component {
     }
 }
 
-export default Kelas
+const MapStateToProps=(state)=>{
+    return{
+        Authlog:state.Auth.login,
+        idpaketbljr:state.Auth.idpaketbljr
+    }
+}
+
+export default connect(MapStateToProps) (Kelas)
