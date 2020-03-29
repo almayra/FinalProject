@@ -5,6 +5,9 @@ import Axios from 'axios'
 import {APIURL, APIURLIMG} from '../../support/url'
 import {IoMdTrash} from 'react-icons/io'
 import moment from 'moment'
+import UANG from '../../support/img/uang.png'
+import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
+
 
 export class Transaksi extends Component {
     state={
@@ -68,7 +71,13 @@ export class Transaksi extends Component {
                 )
             })
         }else{
-            return <h1>No Transaction</h1>
+            return(
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <img src={UANG} className='md-auto' style={{height:'20rem'}} />
+                </tr>
+            )
         }
     }
 
@@ -116,34 +125,28 @@ export class Transaksi extends Component {
                             <tr>
                             <th colspan="6">
                             <div>
-                                {pager.pages && pager.pages.length &&
-                                    <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', justifyContent:'center' }}>
-                                        <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                            <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}  >First</Link>
+                            {pager.pages && pager.pages.length &&
+                                <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', maxWidth:'fit-content' }}>
+                                    <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                        <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}> <AiOutlineDoubleLeft/> </Link>
+                                    </li>
+                                    <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                        <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}> <AiOutlineLeft/> </Link>
+                                    </li>
+                                    {pager.pages.map(page =>
+                                        <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
+                                            <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
                                         </li>
-                                        <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}>Previous</Link>
-                                        </li>
-                                        {pager.pages.map(page =>
-                                            <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
-                                                <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
-                                            </li>
-                                        )}
-                                        <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}>Next</Link>
-                                        </li>
-                                        <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                            <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}>Last</Link>
-                                        </li>
-                                    </ul>
-                                }
+                                    )}
+                                    <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                        <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}> <AiOutlineRight/> </Link>
+                                    </li>
+                                    <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                        <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}> <AiOutlineDoubleRight/> </Link>
+                                    </li>
+                                </ul>
+                            }
                                 </div>
-                                {/* <div class="ui small primary button" style={{ fontWeight:'bolder', fontSize:'13px'}}>
-                                Konfirmasi
-                                </div> */}
-                                {/* <div class="ui small  disabled button" style={{ fontWeight:'bolder', fontSize:'13px'}}>
-                                Konfirmasi Semua
-                                </div> */}
                             </th>
                             </tr>
                         </tfoot>

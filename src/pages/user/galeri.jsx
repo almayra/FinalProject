@@ -57,7 +57,7 @@ class Kelolagaleri extends Component {
                     <ModalBody>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item" style={{ color:'black'}} >Ganti Password  </li>
-                            <Link to ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </Link>
+                            <a href ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </a>
                         </ul>
                     </ModalBody>
                 </Modal>

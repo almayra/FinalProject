@@ -75,7 +75,7 @@ export class Kelasdetail extends Component {
                             active={activeItem === 'home'}
                             />
                         </Menu>
-                        <div style={{marginTop:'50px', marginLeft:'35px', fontSize:'14px'}} >{this.state.detailkelas.deskripsi}</div>
+                        <div style={{marginTop:'46px', marginLeft:'35px', fontSize:'14px', maxWidth:'600px', textOverflow:'ellipsis'}} >{this.state.detailkelas.deskripsi}</div>
                     </div>
                     
                 </div>

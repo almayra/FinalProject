@@ -8,6 +8,8 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, CustomInpu
 import {APIURL, APIURLIMG} from '../../support/url'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
+
 
 const MySwal=withReactContent(Swal)
 
@@ -321,26 +323,26 @@ export class Admin extends Component {
                     </div>
                 <div style={{ maxWidth:'fit-content', marginLeft:'-30rem', marginBottom:'3rem'}}>
                 {pager.pages && pager.pages.length &&
-                        <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black' }}>
-                            <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}  >First</Link>
+                    <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', maxWidth:'fit-content' }}>
+                        <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                            <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}> <AiOutlineDoubleLeft/> </Link>
+                        </li>
+                        <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}> <AiOutlineLeft/> </Link>
+                        </li>
+                        {pager.pages.map(page =>
+                            <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
+                                <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
                             </li>
-                            <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}>Previous</Link>
-                            </li>
-                            {pager.pages.map(page =>
-                                <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
-                                    <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
-                                </li>
-                            )}
-                            <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}>Next</Link>
-                            </li>
-                            <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}>Last</Link>
-                            </li>
-                        </ul>
-                    }
+                        )}
+                        <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}> <AiOutlineRight/> </Link>
+                        </li>
+                        <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                            <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}> <AiOutlineDoubleRight/> </Link>
+                        </li>
+                    </ul>
+                }
                 </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import KELAS from '../../support/img/kosong.png'
 import {connect} from 'react-redux'
 import Axios from 'axios';
 import { APIURL, APIURLIMG } from '../../support/url';
+import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
 
 
 export class Home extends Component {
@@ -130,27 +131,27 @@ export class Home extends Component {
                             {this.renderCard() }
                         </div>
                         <div style={{ maxWidth:'fit-content', marginLeft:'36rem',marginTop:'-10rem'}}>
-                            {pager.pages && pager.pages.length &&
-                                <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black' }}>
-                                    <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                        <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}  >First</Link>
+                        {pager.pages && pager.pages.length &&
+                            <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', maxWidth:'fit-content' }}>
+                                <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                    <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}> <AiOutlineDoubleLeft/> </Link>
+                                </li>
+                                <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                                    <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}> <AiOutlineLeft/> </Link>
+                                </li>
+                                {pager.pages.map(page =>
+                                    <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
+                                        <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
                                     </li>
-                                    <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                        <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}>Previous</Link>
-                                    </li>
-                                    {pager.pages.map(page =>
-                                        <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
-                                            <Link className="page-link" onClick={() => this.setState({ page: page })}>{page}</Link>
-                                        </li>
-                                    )}
-                                    <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                        <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}>Next</Link>
-                                    </li>
-                                    <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                        <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}>Last</Link>
-                                    </li>
-                                </ul>
-                            }
+                                )}
+                                <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                    <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}> <AiOutlineRight/> </Link>
+                                </li>
+                                <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                                    <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}> <AiOutlineDoubleRight/> </Link>
+                                </li>
+                            </ul>
+                        }
                         </div>
                     </div>
 

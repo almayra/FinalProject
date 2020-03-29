@@ -4,11 +4,12 @@ import {FaUserAlt} from 'react-icons/fa'
 import { APIURL } from '../../support/url';
 import { Card } from 'reactstrap';
 import Axios from 'axios'
-
+import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
 
 export class Performa extends Component {
     state={
         datauser:[],
+        datasubscribe:[],
         page:1,
         pager:{},
         search:''
@@ -22,6 +23,13 @@ export class Performa extends Component {
         }).catch(err =>{
             console.log(err)
         })
+        Axios.get(`${APIURL}auth/datasubscribe/${this.state.page}`)
+        .then(res1 =>{
+            this.setState({datasubscribe:res1.data.pageOfData, pager1:res1.data.pager})
+            console.log(this.state.datasubscribe)
+        }).catch(err =>{
+            console.log(err)
+        })
     }
 
     componentDidUpdate(_, prevState){
@@ -30,6 +38,14 @@ export class Performa extends Component {
             .then(res1 =>{
                 this.setState({datauser:res1.data.pageOfData, pager:res1.data.pager})
                 console.log(this.state.datauser)
+            }).catch(err =>{
+                console.log(err)
+            })
+
+            Axios.get(`${APIURL}auth/datasubscribe/${this.state.page}`)
+            .then(res1 =>{
+                this.setState({datasubscribe:res1.data.pageOfData, pager1:res1.data.pager})
+                console.log(this.state.datasubscribe)
             }).catch(err =>{
                 console.log(err)
             })
@@ -78,6 +94,7 @@ export class Performa extends Component {
                             />
                         </div>
                 </div>
+
                 <div className='table'>
                     <table class="ui striped table" style={{marginLeft:'-20.5cm', width:'30cm'}}>
                         <thead>
@@ -97,12 +114,12 @@ export class Performa extends Component {
                             <th colspan="6">
                                 <div>
                                 {pager.pages && pager.pages.length &&
-                                    <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', justifyContent:'center' }}>
+                                    <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', maxWidth:'fit-content' }}>
                                         <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                            <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}  >First</Link>
+                                            <Link to={{ search: `?page=1` }} className="page-link" onClick={() => this.setState({ page: pager.startPage })}> <AiOutlineDoubleLeft/> </Link>
                                         </li>
                                         <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
-                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}>Previous</Link>
+                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage - 1 })}> <AiOutlineLeft/> </Link>
                                         </li>
                                         {pager.pages.map(page =>
                                             <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
@@ -110,17 +127,14 @@ export class Performa extends Component {
                                             </li>
                                         )}
                                         <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}>Next</Link>
+                                            <Link className="page-link" onClick={() => this.setState({ page: pager.currentPage + 1 })}> <AiOutlineRight/> </Link>
                                         </li>
                                         <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
-                                            <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}>Last</Link>
+                                            <Link className="page-link" onClick={() => this.setState({ page: pager.endPage })}> <AiOutlineDoubleRight/> </Link>
                                         </li>
                                     </ul>
                                 }
                                 </div>
-                                {/* <div class="ui right floated small teal labeled icon button">
-                                    <i class="user icon"></i> 10
-                                </div> */}
                             </th>
                             </tr>
                         </tfoot>
