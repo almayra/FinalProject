@@ -6,7 +6,9 @@ import {APIURL, APIURLIMG} from '../../support/url'
 import {IoMdTrash} from 'react-icons/io'
 import moment from 'moment'
 import UANG from '../../support/img/uang.png'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, FormText, CustomInput, Button } from 'reactstrap'
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
+import {logOut} from '../../redux/action'
 
 
 export class Transaksi extends Component {
@@ -15,6 +17,7 @@ export class Transaksi extends Component {
         dataaprove:[],
         page:1,
         pager:{},
+        modalprofil:false,
         search:''
     }
 
@@ -51,6 +54,15 @@ export class Transaksi extends Component {
         })
     }
 
+    onProfilOpen=()=>{
+        this.setState({modalprofil:true})
+    }
+
+    logOutUser=()=>{
+        localStorage.clear()
+        logOut()
+    }
+
     renderUser=()=>{
         var user = this.state.datauser
         if(user.length){
@@ -58,8 +70,8 @@ export class Transaksi extends Component {
                 return(
                     <tr>
                         <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.username} </td>
-                        <td style={{ fontWeight:'regular', fontSize:'13px'}}> {moment(val.tglmulai).format('LL')} </td>
-                        <td style={{ fontWeight:'regular', fontSize:'13px'}}> {moment(val.tglmulai).add(1, 'M').format('LL')} </td>
+                        {/* <td style={{ fontWeight:'regular', fontSize:'13px'}}> {moment(val.tglmulai).format('LL')} </td> */}
+                        {/* <td style={{ fontWeight:'regular', fontSize:'13px'}}> {moment(val.tglmulai).add(1, 'M').format('LL')} </td> */}
                         <td style={{ fontWeight:'regular', fontSize:'13px'}} > {val.namapaket} </td>
                         <td> <img src={`${APIURLIMG+val.bukti}`} height='100px' /> </td>
                         <td> 
@@ -86,33 +98,49 @@ export class Transaksi extends Component {
         var {pager} = this.state
         return (
             <div className='login1'>
-                <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
-                        <Link a to='/kursus' style={{color:'black'}}>
-                            KURSUS
-                        </Link>
-                        <Link a to='/performa' style={{color:'black'}}>
-                            PERFORMA
-                        </Link>
-                        <Link a to='/transaksi' style={{color:'black'}}>
-                            TRANSAKSI
-                        </Link>
-                        <Link a to='/admingaleri' style={{color:'black'}}>
-                            KELOLA GALERI
-                        </Link>                         
-                        <div>
-                            <FaUserAlt
-                            size={30}
-                            style={{marginTop:'-1.5cm',marginLeft:'38cm',color:'#4b4b4b'}}
-                            />
-                        </div>
+                <Modal isOpen={this.state.modalprofil} centered toggle={() => this.setState({ modalprofil: false })}>
+                    <ModalHeader>
+                        <div style={{fontSize:'15px', fontWeight:'bold'}}>
+                            Profil
+                        </div>                    
+                    </ModalHeader>
+                    <ModalBody>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style={{cursor:'pointer', color:'black'}}>Ganti Password  </li>
+                            <a href ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </a>
+                        </ul>
+                    </ModalBody>
+                </Modal>
+                <div>
+                    <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
+                            <Link a to='/kursus' style={{color:'black'}}>
+                                KURSUS
+                            </Link>
+                            <Link a to='/performa' style={{color:'black'}}>
+                                PERFORMA
+                            </Link>
+                            <Link a to='/transaksi' style={{color:'black'}}>
+                                TRANSAKSI
+                            </Link>
+                            {/* <Link a to='/admingaleri' style={{color:'black'}}>
+                                KELOLA GALERI
+                            </Link>                          */}
+                    </div>
+                    <div>
+                        <FaUserAlt
+                        size={30}
+                        onClick={()=>this.onProfilOpen()}
+                        style={{marginTop:'-24rem',marginLeft:'87.5rem',color:'#4b4b4b'}}
+                        />
+                    </div>
                 </div>
                 <div className='table'>
-                    <table class="ui compact celled definition table large" style={{marginLeft:'-20.5cm', width:'30cm'}}>
+                    <table class="ui compact celled definition table large" style={{marginLeft:'-81rem', width:'30cm'}}>
                         <thead class="full-width" >
                             <tr>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
-                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Berlangganan</th>
-                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Berakhir</th>
+                                {/* <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Berlangganan</th> */}
+                                {/* <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Berakhir</th> */}
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Paket Belajar</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Bukti Pembayaran</th>
                                 <th style={{fontWeight:'bold', fontSize:'15px'}}>Status</th>

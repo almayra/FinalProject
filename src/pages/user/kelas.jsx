@@ -8,6 +8,8 @@ import { APIURL, APIURLIMG } from '../../support/url';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, FormText, CustomInput, Button } from 'reactstrap'
+import {logOut} from '../../redux/action'
 
 const MySwal=withReactContent(Swal)
 
@@ -18,6 +20,7 @@ export class Kelas extends Component {
         pager:{},
         search:'',
         notloginyet:false,
+        modalprofil:false,
         kelasdetail:false        
     }
 
@@ -59,6 +62,15 @@ export class Kelas extends Component {
                 footer: '<a href="/paketbelajar">Berlangganan Sekarang</a>'
               })
         )
+    }
+
+    onProfilOpen=()=>{
+        this.setState({modalprofil:true})
+    }
+
+    logOutUser=()=>{
+        localStorage.clear()
+        logOut()
     }
 
     renderCard1=()=>{
@@ -140,21 +152,39 @@ export class Kelas extends Component {
         var {pager}=this.state
         return (
             <div className='login1-admin1'>
-                <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
-                        <Link a to='beranda' style={{color:'black'}}>
-                            BERANDA
-                        </Link>
-                        <Link a to='kelas' style={{color:'black'}}>
-                            KELAS
-                        </Link>
-                        <Link a to='galeri' style={{color:'black'}}>
-                            GALERI PKC
-                        </Link>                          
+                <Modal isOpen={this.state.modalprofil} centered toggle={() => this.setState({ modalprofil: false })}>
+                    <ModalHeader>
+                        <div style={{fontSize:'15px', fontWeight:'bold'}}>
+                            Profil
+                        </div>                    
+                    </ModalHeader>
+                    <ModalBody>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style={{cursor:'pointer', color:'black'}}>Ganti Password  </li>
+                            <a href ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </a>
+                        </ul>
+                    </ModalBody>
+                </Modal>
+                <div>
+                    <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
+                            <Link a to='beranda' style={{color:'black'}}>
+                                BERANDA
+                            </Link>
+                            <Link a to='kelas' style={{color:'black'}}>
+                                KELAS
+                            </Link>
+                            {/* <Link a to='galeri' style={{color:'black'}}>
+                                GALERI PKC
+                            </Link>                           */}
+                    </div>   
+                    <div>
                         <FaUserAlt
                             size={30}
-                            style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
+                            onClick={()=>this.onProfilOpen()}
+                            style={{marginTop:'-24rem',marginLeft:'88.1rem',color:'#4b4b4b'}}
                         />
-                    </div>    
+                    </div> 
+                </div>
                 <div className='kecuali'>
                    <div className='box'>
                         <div className='bebas' style={{fontSize:'35px',color:'white',fontWeight:'bold',marginTop:'1cm'}}>

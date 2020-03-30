@@ -112,9 +112,9 @@ export class Mainadd extends Component {
         formdata.append('data', JSON.stringify(dataKelas))
 
         if(judul===''||bab===''||materi===''||deskripsi===''||idkategori===''||foto===''){
-            MySwal.fire('Gagal', 'Kamu belum masukin semuanya sayang','error')
+            MySwal.fire('Gagal', 'Ada yang belum kamu isi :)','error')
         }else{
-            MySwal.fire('Berhasil', 'Berhasil simpan data cinta!', 'success')
+            MySwal.fire('Berhasil', 'Berhasil simpan data!', 'success')
         }
 
         Axios.post(`${APIURL}kelas/tambahkelas`, formdata, Headers)
@@ -141,9 +141,9 @@ export class Mainadd extends Component {
                         <Link a to='/transaksi' style={{color:'black'}}>
                             TRANSAKSI
                         </Link>
-                        <Link a to='/admingaleri' style={{color:'black'}}>
+                        {/* <Link a to='/admingaleri' style={{color:'black'}}>
                             KELOLA GALERI
-                        </Link> 
+                        </Link>  */}
                         <div>
                             <FaUserAlt
                             size={30}

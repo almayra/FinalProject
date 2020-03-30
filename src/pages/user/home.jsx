@@ -6,6 +6,8 @@ import {connect} from 'react-redux'
 import Axios from 'axios';
 import { APIURL, APIURLIMG } from '../../support/url';
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, FormText, CustomInput, Button } from 'reactstrap'
+import {logOut} from '../../redux/action'
 
 
 export class Home extends Component {
@@ -14,6 +16,7 @@ export class Home extends Component {
         page:1,
         pager:{},
         search:'',
+        modalprofil:false,
         username:''
     }
 
@@ -63,7 +66,7 @@ export class Home extends Component {
         if(card.length){
             return card.map((val, index)=>{
                 return(
-                    <Link to={'/kelasdetail/' +val.id} style={{marginLeft:'35rem',marginTop:'-10rem', marginRight:'-35rem'}}>
+                    <Link to={'/kelasdetail/' +val.id} style={{marginLeft:'36rem',marginTop:'-10rem', marginRight:'-35rem'}}>
                         <div className='d-flex'>
                             <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'22rem'}}>
                             <div className='gambar'>
@@ -85,24 +88,53 @@ export class Home extends Component {
         }
     }
 
+    onProfilOpen=()=>{
+        this.setState({modalprofil:true})
+    }
+
+    logOutUser=()=>{
+        localStorage.clear()
+        logOut()
+    }
+
     render() {
         var {pager}=this.state
         return (
             <div className='App-kelas' style={{height:'40vh'}}>
+                <Modal isOpen={this.state.modalprofil} centered toggle={() => this.setState({ modalprofil: false })}>
+                    <ModalHeader>
+                        <div style={{fontSize:'15px', fontWeight:'bold'}}>
+                            Profil
+                        </div>                    
+                    </ModalHeader>
+                    <ModalBody>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style={{cursor:'pointer', color:'black'}}>Ganti Password  </li>
+                            <a href ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </a>
+                        </ul>
+                    </ModalBody>
+                </Modal>
                 <div className='sidebar'>
-                <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
-                        <a>BERANDA</a>
-                        <Link a to='kelas' style={{color:'black'}}>
-                            KELAS
-                        </Link>
-                        <Link a to='galeri' style={{color:'black'}}>
-                            GALERI PKC
-                        </Link>
-                            <FaUserAlt
+                <div>
+                    <div class="container white topBotomBordersOut" style={{marginLeft:'-8.5cm',marginTop:'-3cm'}}>
+                            <Link a to='beranda' style={{color:'black'}}>
+                                BERANDA
+                            </Link>
+                            <Link a to='kelas' style={{color:'black'}}>
+                                KELAS
+                            </Link>
+                            {/* <Link a to='galeri' style={{color:'black'}}>
+                                GALERI PKC
+                            </Link>                           */}
+                    </div>   
+                    <div>
+                        <FaUserAlt
                             size={30}
-                            style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}
+                            onClick={()=>this.onProfilOpen()}
+                            style={{marginTop:'-24rem',marginLeft:'80.7rem',color:'#4b4b4b'}}
                         />
-                    </div>        
+                    </div> 
+                </div>    
                 </div>
                 <div className='kecuali1'></div>
                 {

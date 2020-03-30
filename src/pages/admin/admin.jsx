@@ -9,6 +9,7 @@ import {APIURL, APIURLIMG} from '../../support/url'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
+import {logOut} from '../../redux/action'
 
 
 const MySwal=withReactContent(Swal)
@@ -69,7 +70,7 @@ export class Admin extends Component {
         if(card.length){
             return card.map((val, index)=>{
                 return(
-                        <div style={{textAlign:'center',justifyContent:'center',marginLeft:'-30rem'}} >
+                        <div style={{textAlign:'center',justifyContent:'center',marginLeft:'-56rem'}} >
                             <div>
                                 <div className="card" style={{width: '20rem', borderRadius:'2rem', height:'26rem'}}>
                                 <img className="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
@@ -206,6 +207,15 @@ export class Admin extends Component {
         this.setState({idkategori:value})
     }
 
+    onProfilOpen=()=>{
+        this.setState({modalprofil:true})
+    }
+
+    logOutUser=()=>{
+        localStorage.clear()
+        logOut()
+    }
+
     render() {
         var {pager}=this.state
         return (
@@ -271,44 +281,44 @@ export class Admin extends Component {
                     </ModalFooter>
                 </Modal>
 
-                <Modal isOpen={this.state.modalprofil} toggle={() => this.setState({ modalprofil: false })} >
+                <Modal isOpen={this.state.modalprofil} centered toggle={() => this.setState({ modalprofil: false })}>
                     <ModalHeader>
-                        Profil
+                        <div style={{fontSize:'15px', fontWeight:'bold'}}>
+                            Profil
+                        </div>                    
                     </ModalHeader>
                     <ModalBody>
-                        <Form>
-                            <FormGroup>
-                                <input class='form-control' 
-                                type="text" 
-                                ref="editmateri" 
-                                placeholder='Materi Kelas' 
-                                />
-                            </FormGroup>
-                        </Form>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style={{cursor:'pointer', color:'black'}}>Ganti Password  </li>
+                            <a href ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </a>
+                        </ul>
                     </ModalBody>
                 </Modal>
 
-                <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
-                        <Link to='/kursus' style={{color:'black'}}>
-                            KURSUS
-                        </Link>
-                        <Link a to='/performa' style={{color:'black'}}>
-                            PERFORMA
-                        </Link>
-                        <Link a to='/transaksi' style={{color:'black'}}>
-                            TRANSAKSI
-                        </Link>     
-                        <Link a to='/admingaleri' style={{color:'black'}}>
-                            KELOLA GALERI
-                        </Link>                        
-                        <div>
-                            <FaUserAlt
-                            size={30}
-                            onClick={()=>this.onProfilClick()}
-                            style={{marginTop:'-1.5cm',marginLeft:'38cm',color:'#4b4b4b'}}
-                            />
-                        </div>
+                <div>
+                    <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
+                            <Link a to='/kursus' style={{color:'black'}}>
+                                KURSUS
+                            </Link>
+                            <Link a to='/performa' style={{color:'black'}}>
+                                PERFORMA
+                            </Link>
+                            <Link a to='/transaksi' style={{color:'black'}}>
+                                TRANSAKSI
+                            </Link>
+                            {/* <Link a to='/admingaleri' style={{color:'black'}}>
+                                KELOLA GALERI
+                            </Link>                          */}
+                    </div>
+                    <div>
+                        <FaUserAlt
+                        size={30}
+                        onClick={()=>this.onProfilOpen()}
+                        style={{marginTop:'-24rem',marginLeft:'87.5rem',color:'#4b4b4b'}}
+                        />
+                    </div>
                 </div>
+
                 <div className='kecuali'>
                     <div className="box1">
                         <Link to='/tambahkelas'>
@@ -321,7 +331,7 @@ export class Admin extends Component {
                     <div className='kelasloop'>
                         {this.renderCard()}
                     </div>
-                <div style={{ maxWidth:'fit-content', marginLeft:'-30rem', marginBottom:'3rem'}}>
+                <div style={{ maxWidth:'fit-content', marginLeft:'-55rem', marginBottom:'3rem'}}>
                 {pager.pages && pager.pages.length &&
                     <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', maxWidth:'fit-content' }}>
                         <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>

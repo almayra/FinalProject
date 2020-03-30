@@ -40,9 +40,9 @@ export class Kelasdetail extends Component {
                         <Link a to='/kelas' style={{color:'black'}}>
                             KELAS
                         </Link>
-                        <Link a to='/galeri' style={{color:'black'}}>
+                        {/* <Link a to='/galeri' style={{color:'black'}}>
                             GALERI PKC
-                        </Link>
+                        </Link> */}
                             <FaUserAlt
                             size={30}
                             style={{marginTop:'-1.5cm',marginLeft:'40cm',color:'#4b4b4b'}}

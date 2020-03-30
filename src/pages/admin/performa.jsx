@@ -5,6 +5,9 @@ import { APIURL } from '../../support/url';
 import { Card } from 'reactstrap';
 import Axios from 'axios'
 import {AiOutlineDoubleLeft, AiOutlineDoubleRight, AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, FormText, CustomInput, Button } from 'reactstrap'
+import {logOut} from '../../redux/action'
+
 
 export class Performa extends Component {
     state={
@@ -12,6 +15,7 @@ export class Performa extends Component {
         datasubscribe:[],
         page:1,
         pager:{},
+        modalprofil:false,
         search:''
     }
 
@@ -53,56 +57,82 @@ export class Performa extends Component {
     }
 
     renderTable=()=>{
-        var table=this.state.datauser
+        var table=this.state.datasubscribe
         if(Card.length){
             return table.map((val, index)=>{
                 return(
                         <tr>
-                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {index + 1}. </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.username} </td>
-                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.email} </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.namapaket} </td>
+                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.tglmulai} </td>
+                            <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.tglberakhir} </td>
                             <td style={{ fontWeight:'regular', fontSize:'13px'}}> {val.status} </td>
                         </tr>
                 )
             })
         }
     }
-    
+
+    onProfilOpen=()=>{
+        this.setState({modalprofil:true})
+    }
+
+    logOutUser=()=>{
+        localStorage.clear()
+        logOut()
+    }
+
 
     render() {
         var {pager} = this.state
         return (
             <div className='login1'>
-                <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
-                        <Link a to='/kursus' style={{color:'black'}}>
-                            KURSUS
-                        </Link>
-                        <Link a to='/performa' style={{color:'black'}}>
-                            PERFORMA
-                        </Link>
-                        <Link a to='/transaksi' style={{color:'black'}}>
-                            TRANSAKSI
-                        </Link>
-                        <Link a to='/admingaleri' style={{color:'black'}}>
-                            KELOLA GALERI
-                        </Link> 
-                        <div>
-                            <FaUserAlt
-                            size={30}
-                            style={{marginTop:'-1.5cm',marginLeft:'38cm',color:'#4b4b4b'}}
-                            />
-                        </div>
+                <Modal isOpen={this.state.modalprofil} centered toggle={() => this.setState({ modalprofil: false })}>
+                    <ModalHeader>
+                        <div style={{fontSize:'15px', fontWeight:'bold'}}>
+                            Profil
+                        </div>                    
+                    </ModalHeader>
+                    <ModalBody>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style={{cursor:'pointer', color:'black'}}>Ganti Password  </li>
+                            <a href ='login' class="list-group-item" style={{cursor:'pointer', color:'black'}} onClick={this.logOutUser} >Keluar </a>
+                        </ul>
+                    </ModalBody>
+                </Modal>
+
+                <div>
+                    <div class="container white topBotomBordersOut" style={{marginLeft:'-6.7cm',marginTop:'-3cm'}}>
+                            <Link a to='/kursus' style={{color:'black'}}>
+                                KURSUS
+                            </Link>
+                            <Link a to='/performa' style={{color:'black'}}>
+                                PERFORMA
+                            </Link>
+                            <Link a to='/transaksi' style={{color:'black'}}>
+                                TRANSAKSI
+                            </Link>
+                            {/* <Link a to='/admingaleri' style={{color:'black'}}>
+                                KELOLA GALERI
+                            </Link>                          */}
+                    </div>
+                    <div>
+                        <FaUserAlt
+                        size={30}
+                        onClick={()=>this.onProfilOpen()}
+                        style={{marginTop:'-24rem',marginLeft:'87.5rem',color:'#4b4b4b'}}
+                        />
+                    </div>
                 </div>
 
                 <div className='table'>
-                    <table class="ui striped table" style={{marginLeft:'-20.5cm', width:'30cm'}}>
+                    <table class="ui striped table" style={{marginLeft:'-81rem', width:'30cm'}}>
                         <thead>
                             <tr>
-                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>No.</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Nama</th>
-                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Alamat Email</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Paket Berlangganan</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Mulai</th>
+                                <th style={{ fontWeight:'bold', fontSize:'15px'}}>Tanggal Berakhir</th>
                                 <th style={{ fontWeight:'bold', fontSize:'15px'}}>Status</th>
                             </tr>
                         </thead>

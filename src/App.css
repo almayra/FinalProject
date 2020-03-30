@@ -891,7 +891,7 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
   background-color: #9ADBC5;
   border-radius: 30px;
   margin-top: 3.5cm;
-  margin-left: -18cm;
+  margin-left: -80rem;
 }
 
 .box1{
@@ -900,7 +900,7 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
   background-color: #f5f5f5;
   border-radius: 25px;
   margin-top: 3cm;
-  margin-left: -20cm;
+  margin-left: -80rem;
   /* border: 2px solid #adadad; */
 }
 

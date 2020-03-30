@@ -18,14 +18,14 @@ export class AdminGaleri extends Component {
         modaladdfoto:false,
         modalprofil:false,
         addimagefile:{},
-        dataGaleri:[]
+        dataFoto:[]
     }
 
     componentDidMount(){
         Axios.get(`${APIURL}galeri/getgaleri`)
         .then(res1 =>{
-            this.setState({dataGaleri:res1.data})
-            console.log(this.state.dataGaleri)
+            this.setState({dataFoto:res1.data})
+            console.log(this.state.dataFoto)
         }).catch(err =>{
             console.log(err)
         })
@@ -46,13 +46,19 @@ export class AdminGaleri extends Component {
         var foto=this.state.addimagefile
         console.log('foto', this.state.addimagefile)
 
-        var dataGaleri={
+        var dataFoto={
             foto
         }
 
-        console.log(dataGaleri)
+        var Headers={
+            headers:{
+                'Content-Type' : 'multipart/form-data'
+            }
+        }
+
+        console.log(dataFoto)
         formdata.append('image', foto)
-        formdata.append('data', JSON.stringify(dataGaleri))
+        formdata.append('data', JSON.stringify(dataFoto))
 
         if(foto===''){
             MySwal.fire('Gagal', 'Kamu belum memilih foto! :)', 'error')
@@ -88,13 +94,13 @@ export class AdminGaleri extends Component {
             reverseButtons:true
         }).then((result)=>{
             if(result.value){
-                var deletefoto=this.state.dataGaleri
+                var deletefoto=this.state.dataFoto
                 var selectedId=deletefoto[index].id
                 console.log(selectedId)
                 Axios.delete(`${APIURL}galeri/deletegaleri/${selectedId}`)
                 .then((res)=>{
                     console.log('berhasil', res.data)
-                    this.setState({dataGaleri:res.data.dataFoto})
+                    this.setState({dataFoto:res.data.dataFoto})
                 }).catch((err)=>{
                     console.log('error', err)
                 })
@@ -117,7 +123,7 @@ export class AdminGaleri extends Component {
     }
 
     renderGallery=()=>{
-        var galeri=this.state.dataGaleri
+        var galeri=this.state.dataFoto
         if(galeri.length){
             return galeri.map((val, index)=>{
                 return(
