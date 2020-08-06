@@ -22,7 +22,7 @@ class Jumbotron2 extends Component {
                 <div></div>
 
                 <div data-aos="fade-up" data-aos-duration="1000">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-31.5cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-35.5cm'}}/>
                     <img src={ICON} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
@@ -31,7 +31,7 @@ class Jumbotron2 extends Component {
                 </div>
 
                 <div data-aos="fade-up" data-aos-duration="1500">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-20cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-23cm'}}/>
                     <img src={ICON1} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
@@ -40,7 +40,7 @@ class Jumbotron2 extends Component {
                 </div>
 
                 <div data-aos="fade-up" data-aos-duration="2000">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-8.5cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-10.5cm'}}/>
                     <img src={ICON2} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'
@@ -49,7 +49,7 @@ class Jumbotron2 extends Component {
                 </div>
 
                 <div data-aos="fade-up" data-aos-duration="2500">
-                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'0cm'}}/>
+                    <span className='dot' style={{marginTop:'7.5cm',marginLeft:'-1cm'}}/>
                     <img src={ICON3} 
                     style={{width:'130px',height:'120px'}} 
                     className='icon1'

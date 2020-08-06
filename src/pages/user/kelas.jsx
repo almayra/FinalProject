@@ -32,6 +32,7 @@ export class Kelas extends Component {
         }).catch(err =>{
             console.log(err)
         })
+        
         Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
         .then(res1 =>{
             console.log('get kelas', res1.data)
@@ -39,6 +40,7 @@ export class Kelas extends Component {
         }).catch( err=>{
             console.log(err)
         })
+        // Axios.get(`${APIURL}transaksi/overtimesubs/${}`)
     }
 
     componentDidUpdate(_, prevState){

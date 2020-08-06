@@ -20,16 +20,16 @@ export class Performa extends Component {
     }
 
     componentDidMount(){
-        Axios.get(`${APIURL}auth/datauser/${this.state.page}`)
-        .then(res1 =>{
-            this.setState({datauser:res1.data.pageOfData, pager:res1.data.pager})
-            console.log(this.state.datauser)
-        }).catch(err =>{
-            console.log(err)
-        })
+        // Axios.get(`${APIURL}auth/datauser/${this.state.page}`)
+        // .then(res1 =>{
+        //     this.setState({datauser:res1.data.pageOfData, pager:res1.data.pager})
+        //     console.log(this.state.datauser)
+        // }).catch(err =>{
+        //     console.log(err)
+        // })
         Axios.get(`${APIURL}auth/datasubscribe/${this.state.page}`)
         .then(res1 =>{
-            this.setState({datasubscribe:res1.data.pageOfData, pager1:res1.data.pager})
+            this.setState({datasubscribe:res1.data.pageOfData, pager:res1.data.pager})
             console.log(this.state.datasubscribe)
         }).catch(err =>{
             console.log(err)
@@ -38,17 +38,17 @@ export class Performa extends Component {
 
     componentDidUpdate(_, prevState){
         if(prevState.page !== this.state.page){
-            Axios.get(`${APIURL}auth/datauser/${this.state.page}`)
-            .then(res1 =>{
-                this.setState({datauser:res1.data.pageOfData, pager:res1.data.pager})
-                console.log(this.state.datauser)
-            }).catch(err =>{
-                console.log(err)
-            })
+            // Axios.get(`${APIURL}auth/datasubscribe/${this.state.page}`)
+            // .then(res1 =>{
+            //     this.setState({datauser:res1.data.pageOfData, pager:res1.data.pager})
+            //     console.log(this.state.datauser)
+            // }).catch(err =>{
+            //     console.log(err)
+            // })
 
             Axios.get(`${APIURL}auth/datasubscribe/${this.state.page}`)
             .then(res1 =>{
-                this.setState({datasubscribe:res1.data.pageOfData, pager1:res1.data.pager})
+                this.setState({datasubscribe:res1.data.pageOfData, pager:res1.data.pager})
                 console.log(this.state.datasubscribe)
             }).catch(err =>{
                 console.log(err)

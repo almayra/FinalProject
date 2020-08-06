@@ -12,6 +12,7 @@ import {logOut} from '../../redux/action'
 
 export class Home extends Component {
     state={
+        cardKelasBaru:[],
         cardKelas:[],
         page:1,
         pager:{},
@@ -47,6 +48,13 @@ export class Home extends Component {
         }).catch( err=>{
             console.log(err)
         })
+        Axios.get(`${APIURL}kelas/getkelasbaru`)
+        .then(res1=>{
+            this.setState({cardKelasBaru:res1.data})
+            console.log('get kelas baru', res1.data)
+        }).catch(err =>{
+            console.log(err)
+        })
     }
 
     componentDidUpdate(_, prevState){
@@ -66,7 +74,34 @@ export class Home extends Component {
         if(card.length){
             return card.map((val, index)=>{
                 return(
-                    <Link to={'/kelasdetail/' +val.id} style={{marginLeft:'36rem',marginTop:'-10rem', marginRight:'-35rem'}}>
+                    <Link to={'/kelasdetail/' +val.id} style={{marginLeft:'36rem',marginTop:'-15rem', marginRight:'-35rem'}}>
+                        <div className='d-flex'>
+                            <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'22rem'}}>
+                            <div className='gambar'>
+                                <img class="card-img-top" style={{borderRadius:'2rem',borderBottomLeftRadius:'0rem', borderBottomRightRadius:'0rem', height:'11rem' }} src={`${APIURLIMG+val.cover}`} alt="Card image cap"/>
+                            </div>
+                                <div class="card-body">
+                                <p class="card-text" style={{fontSize:'15px',fontWeight:'500',color:'#8B8B8B',textAlign:'left'}}>{val.namakategori}</p>
+                                <p class="card-text" style={{fontWeight:'bolder',fontSize:'25px',textAlign:'left',color:'#222E35'}}>{val.judul}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                )
+            })
+        }else{
+            return(
+                <div> loading </div>
+            )
+        }
+    }
+
+    renderCardBaru=()=>{
+        var cardbaru= this.state.cardKelasBaru
+        if(cardbaru.length){
+            return cardbaru.map((val, index)=>{
+                return(
+                    <Link to={'/kelasdetail/' +val.id} style={{marginTop:'30px'}}>
                         <div className='d-flex'>
                             <div class="card" style={{width: '20rem', borderRadius:'2rem', height:'22rem'}}>
                             <div className='gambar'>
@@ -159,10 +194,15 @@ export class Home extends Component {
                 {
                     this.props.idpaketbljr===2?
                     <div>
-                        <div className='kelasloop'>
-                            {this.renderCard() }
+                        <h1 style={{color: 'black', size: '50px', marginTop:'-100px', fontWeight:'bold', marginLeft:'-20cm'}}>Hi {this.usernameCap(this.props.username)}, ada kelas baru nih!</h1>
+                        <div className='kelasloop2'>
+                            {this.renderCardBaru() }
                         </div>
-                        <div style={{ maxWidth:'fit-content', marginLeft:'36rem',marginTop:'-10rem'}}>
+                        <h1 style={{color: 'black', size: '50px', marginTop:'-55rem', fontWeight:'bold', marginLeft:'-24.7cm'}}>Semua Kelas</h1>
+                        <div className="kelasloop" style={{marginTop:'20rem'}}>
+                            {this.renderCard()}
+                        </div>
+                        <div style={{ maxWidth:'fit-content', marginLeft:'36rem',marginTop:'-15rem'}}>
                         {pager.pages && pager.pages.length &&
                             <ul className="pagination pagination-lg" style={{ backgroundColor: '#f5f5f5', color: 'black', maxWidth:'fit-content' }}>
                                 <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>

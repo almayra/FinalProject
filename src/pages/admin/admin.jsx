@@ -173,7 +173,13 @@ export class Admin extends Component {
 
         Axios.put(`${APIURL}kelas/editkelas/${idEdit}`, formdata, Headers)
         .then(res =>{
-            this.setState({modaledit: false, cardKelas:res.data})
+            Axios.get(`${APIURL}kelas/getkelaspage/${this.state.page}`)
+            .then(res1 =>{
+                console.log('get kelas', res1.data)
+                this.setState({cardKelas: res1.data.pageOfData, pager:res1.data.pager, modaledit:false})
+            }).catch( err=>{
+                console.log(err)
+            })
         }).catch(err =>{
             console.log(err)
         })
